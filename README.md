@@ -1,4 +1,4 @@
-<h2 align="left">Hi 👋! My name is Youssef Talibi, and I'm a full-stack developer from Morocco	&#x1f1f2;&#x1f1e6;</h2>
+<h2 align="left">Hi 👋!  My name is Youssef Talibi, and I'm a full-stack developer from Morocco	&#x1f1f2;&#x1f1e6;</h2>
 
 ###
 
