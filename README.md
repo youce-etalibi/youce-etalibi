@@ -134,20 +134,7 @@
 ###
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=youce-etalibi&hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=gruvbox_light&locale=en&hide_border=false&order=1" height="250" alt="stats graph"  />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=youce-etalibi&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=gruvbox_light&hide_border=false&order=2" height="250" alt="languages graph"  />
   <img src="https://streak-stats.demolab.com?user=youce-etalibi&locale=en&mode=daily&theme=radical&hide_border=false&border_radius=5&order=3" height="220" alt="streak graph"  />
 </div>
-
-###
-
-<div align="center">
-  <img src="https://github-profile-trophy.vercel.app?username=youce-etalibi&theme=dracula&column=-1&row=1&margin-w=8&margin-h=8&no-bg=false&no-frame=false&order=4" height="150" alt="trophy graph"  />
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=youce-etalibi&radius=16&theme=react&area=true&order=5" height="300" alt="activity-graph graph"  />
-</div>
-
-###
-
-<img src="https://raw.githubusercontent.com/youce-etalibi/youce-etalibi/output/snake.svg" alt="Snake animation" />
 
 ###
