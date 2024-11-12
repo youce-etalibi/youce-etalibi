@@ -38,7 +38,6 @@
 ###
 
 <p align="left">
-    <strong> Youssef TALIBI </strong><br><br>
     Passionate about coding and always learning new tech. 💻<br><br>
     I believe in teamwork to create something great. 🤝<br><br>
     Let's connect and build something amazing!
