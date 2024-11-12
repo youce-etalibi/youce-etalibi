@@ -37,7 +37,12 @@
 
 ###
 
-<p align="left">🚀 Youssef Talibi | 19 | Aspiring Developer 🔥<br><br>💻 Passionate about coding, always learning and growing 🌱 to master new technologies and explore the latest trends in tech!<br><br>🤝 Strong believer in the power of teamwork and collaboration to innovate and create amazing things together.<br><br>✨ Ready to connect? Hit me up on LinkedIn or other socials for collaborations, ideas, or questions.<br><br>Let’s build something magical together! 💡🌟</p>
+<p align="left">
+    <strong> Youssef TALIBI </strong><br><br>
+    Passionate about coding and always learning new tech. 💻<br><br>
+    I believe in teamwork to create something great. 🤝<br><br>
+    Let's connect and build something amazing!
+</p>
 
 ###
 
