@@ -1,11 +1,3 @@
-<br clear="both">
-
-<div align="center">
-  <img height="150" src="https://media.licdn.com/dms/image/v2/D4E16AQGnAv_xhqeoHA/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1719350567211?e=1734566400&v=beta&t=ucVkFrj0aOcbL99aVIWX0kRYkYVggq1-VfezqJTlY5s"  />
-</div>
-
-###
-
 <div align="center">
   <a href="https://www.linkedin.com/in/youssef-talibi--fs/" target="_blank">
     <img src="https://img.shields.io/static/v1?message=LinkedIn&logo=linkedin&label=&color=0077B5&logoColor=white&labelColor=&style=for-the-badge" height="25" alt="linkedin logo"  />
@@ -33,15 +25,7 @@
 
 ###
 
-<h3 align="left">👩‍💻 My name is Youssef Talibi, and I'm a full-stack developer from Morocco</h3>
-
-###
-
-<p align="left">
-    Passionate about coding and always learning new tech. 💻<br><br>
-    I believe in teamwork to create something great. 🤝<br><br>
-    Let's connect and build something amazing!
-</p>
+<p align="left">Youssef Talibi | 20<br><br>- Passionate about coding, always learning and growing  to master new technologies and explore the latest trends in tech!<br>- Strong believer in the power of teamwork and collaboration to innovate and create amazing things together.<br>- Ready to connect? Hit me up on LinkedIn or other socials for collaborations, ideas, or questions.<br>Let’s build something magical together!</p>
 
 ###
 
@@ -50,63 +34,25 @@
 ###
 
 <div align="left">
-  
-  <img width="12" />
-  
-  <img width="12" />
-  
-  <img width="12" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" height="40" alt="django logo"  />
   <img width="12" />
-  
-  <img width="12" />
-  
-  <img width="12" />
-  
-  <img width="12" />
-  
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" height="40" alt="express logo"  />
   <img width="12" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" height="40" alt="flask logo"  />
   <img width="12" />
-  
-  <img width="12" />
-  
-  <img width="12" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" height="40" alt="go logo"  />
   <img width="12" />
-  
-  <img width="12" />
-  
-  <img width="12" />
-  
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="40" alt="javascript logo"  />
   <img width="12" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" height="40" alt="java logo"  />
   <img width="12" />
-  
-  <img width="12" />
-  
-  <img width="12" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" height="40" alt="laravel logo"  />
-  <img width="12" />
-  
   <img width="12" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" height="40" alt="linux logo"  />
   <img width="12" />
-  
-  <img width="12" />
-  
-  <img width="12" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" height="40" alt="mysql logo"  />
   <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" height="40" alt="nextjs logo"  />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg" height="40" alt="nginx logo"  />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" height="40" alt="nodejs logo"  />
-  <img width="12" />
-  
-  <img width="12" />
-
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" height="40" alt="php logo"  />
   <img width="12" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" height="40" alt="postgresql logo"  />
   <img width="12" />
@@ -114,21 +60,9 @@
   <img width="12" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="40" alt="react logo"  />
   <img width="12" />
-  
-  <img width="12" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" height="40" alt="redis logo"  />
   <img width="12" />
-
-  <img width="12" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/selenium/selenium-original.svg" height="40" alt="selenium logo"  />
-  <img width="12" />
-
-  <img width="12" />
-
-  <img width="12" />
-
-  <img width="12" />
-
 </div>
 
 ###
