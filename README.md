@@ -18,11 +18,7 @@
 
 <h1 align="center">Hi There 👋</h1>
 
-###
 
-<p align="left">Youssef Talibi | 20<br><br>- Passionate about coding, always learning and growing  to master new technologies and explore the latest trends in tech!<br>- Strong believer in the power of teamwork and collaboration to innovate and create amazing things together.<br>- Ready to connect? Hit me up on LinkedIn or other socials for collaborations, ideas, or questions.<br>Let’s build something magical together!</p>
-
-###
 
 <h3 align="left">🛠 Language and tools</h3>
 
