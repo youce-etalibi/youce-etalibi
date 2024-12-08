@@ -1,13 +1,4 @@
 
-
-###
-
-<h1 align="center">Hi There 👋</h1>
-
-
-
-<h3 align="left">🛠 Language and tools</h3>
-
 ###
 
 <div align="center">
@@ -44,7 +35,6 @@
 
 ###
 
-<h3 align="left">🔥   My Stats :</h3>
 
 ###
 
