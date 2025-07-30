@@ -1,3 +1,3 @@
 <p align="center">
-  <img src="https://i.pinimg.com/originals/3a/9a/4f/3a9a4f936f45a305917826a79836929e.gif" alt="A shining blue star in the vastness of space" width="600"/>
+  <img src="https://media.tenor.com/j4R_2b3YvwwAAAAC/star-light.gif" alt="A pulsing blue supernova" width="600"/>
 </p>
