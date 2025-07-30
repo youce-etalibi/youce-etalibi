@@ -1,3 +1,3 @@
 <p align="center">
-  <img src="talibi-animation.svg" alt="Holographic animation of the name TALIBI">
+  <img src="typing-wall.svg" alt="Holographic animation of the name TALIBI">
 </p>
