@@ -1,67 +1,87 @@
-<svg fill="#CCCCCC" width="800px" height="125px" viewBox="0 0 800 125" xmlns="http://www.w3.org/2000/svg">
-    <!-- 
-        Hey! This is the source code for the animated wall.
-        The magic happens with CSS animations inside this SVG.
-        Feel free to tweak the colors and speed!
+<svg width="850" height="150" viewBox="0 0 850 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!--
+      "Holographic Scanner" Animation for GitHub Profile
+      Designed to be professional, creative, and clear.
+      - A glowing scanner bar reveals the text.
+      - The text has a subtle pulse effect after being revealed.
     -->
+    <defs>
+        <!-- Defines the gradient for the scanner bar -->
+        <linearGradient id="scanner-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#39C5BB" stop-opacity="0" />
+            <stop offset="50%" stop-color="#39C5BB" stop-opacity="1" />
+            <stop offset="100%" stop-color="#39C5BB" stop-opacity="0" />
+        </linearGradient>
+
+        <!-- Defines the blur effect for the scanner glow -->
+        <filter id="scanner-glow">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
+        </filter>
+
+        <!-- Defines the clip path that reveals the text -->
+        <clipPath id="text-clip">
+            <rect class="clip-rect" width="0" height="150" />
+        </clipPath>
+    </defs>
+
     <style>
-        .text {
+        .ascii-art {
             font-family: 'Courier New', Courier, monospace;
             font-size: 16px;
-            white-space: pre; /* This preserves the spaces and line breaks */
-            fill: #4CAF50; /* A cool green "terminal" color */
-        }
-        .wall {
-            fill: #E0E0E0; /* A light gray for the wall texture */
+            white-space: pre;
         }
 
-        /* The typing animation */
-        .line {
-            stroke-dasharray: 1000;
-            stroke-dashoffset: 1000;
-            animation: draw 8s linear forwards;
+        .wall-texture { fill: #4A5568; } /* Darker, subtle wall color */
+        .text-main { fill: #A0AEC0; } /* Main text color - light gray */
+        .text-highlight { fill: #39C5BB; } /* Highlighted text color - a vibrant teal */
+
+        /* Animation for the text reveal */
+        .clip-rect {
+            animation: reveal 4s ease-out forwards;
+            animation-delay: 0.5s;
         }
 
-        #line1 { animation-delay: 0s; }
-        #line2 { animation-delay: 1.5s; }
-        #line3 { animation-delay: 3s; }
-        #line4 { animation-delay: 4.5s; }
-        #line5 { animation-delay: 6s; }
-
-        @keyframes draw {
-            to {
-                stroke-dashoffset: 0;
-            }
+        @keyframes reveal {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        /* Animation for the scanner bar */
+        .scanner-bar {
+            animation: scan 4s ease-out forwards;
+            animation-delay: 0.5s;
         }
 
-        /* The blinking cursor */
-        .cursor {
-            fill: #4CAF50;
-            animation: blink 1s steps(1) infinite;
+        @keyframes scan {
+            from { x: 0; }
+            to { x: 100%; }
         }
 
-        @keyframes blink {
-            50% {
-                opacity: 0;
-            }
+        /* Animation for the text pulse after reveal */
+        .text-highlight {
+            animation: pulse 2.5s infinite;
+            animation-delay: 4.5s; /* Starts after the scan is complete */
+        }
+        
+        @keyframes pulse {
+            0%, 100% { fill: #39C5BB; }
+            50% { fill: #81E6D9; } /* A lighter shade for the pulse */
         }
     </style>
 
-    <!-- The ASCII Art is broken into lines for the animation -->
-    <text y="20" class="wall">
-        <tspan id="line1" class="line">█████████████████████████████████████████████████████████████████████████████████████████████████████████</tspan>
-    </text>
-    <text y="40" class="text">
-        <tspan id="line2" class="line">█░░░████░░░█░░░░█░░░░░█░░░███░░░█░░░░█░░░░░░░░░░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</tspan>
-    </text>
-    <text y="60" class="text">
-        <tspan id="line3" class="line">▒░░░░█░░░░█░█░░░█░░░░░█░░░█░█░░░█░░░░█░░░░░░░░░░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</tspan>
-    </text>
-    <text y="80" class="text">
-        <tspan id="line4" class="line">░░░░░█░░░░███░░░█░░░░░█░░░██░░░░█░░░░█░░░░░░░░░░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</tspan>
-    </text>
-    <text y="100" class="text">
-        <tspan id="line5" class="line">░░░░░█░░░░█░█░░░███░░░█░░░█░█░░░███░░█░░░░░░░░░░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</tspan>
-        <tspan class="cursor" dy="-3">█</tspan> <!-- The Blinking Cursor -->
-    </text>
+    <!-- Background (optional, for a contained look) -->
+    <rect width="100%" height="100%" fill="#0D1117" />
+
+    <!-- The ASCII Art to be revealed -->
+    <g clip-path="url(#text-clip)">
+        <text y="30" class="ascii-art wall-texture">█████████████████████████████████████████████████████████████████████████████████</text>
+        <text y="50" class="ascii-art text-main">█░░░<tspan class="text-highlight">████</tspan>░░░█░░░░<tspan class="text-highlight">█</tspan>░░░░░█░░░<tspan class="text-highlight">███</tspan>░░░<tspan class="text-highlight">█</tspan>░░░░<tspan class="text-highlight">█</tspan>░░░░░░░░░░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</text>
+        <text y="70" class="ascii-art text-main">▒░░░░<tspan class="text-highlight">█</tspan>░░░░█░<tspan class="text-highlight">█</tspan>░░░█░░░░░█░░░<tspan class="text-highlight">█░█</tspan>░░░<tspan class="text-highlight">█</tspan>░░░░<tspan class="text-highlight">█</tspan>░░░░░░░░░░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</text>
+        <text y="90" class="ascii-art text-main">░░░░░<tspan class="text-highlight">█</tspan>░░░░<tspan class="text-highlight">███</tspan>░░░█░░░░░█░░░<tspan class="text-highlight">██</tspan>░░░░<tspan class="text-highlight">█</tspan>░░░░<tspan class="text-highlight">█</tspan>░░░░░░░░░░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</text>
+        <text y="110" class="ascii-art text-main">░░░░░<tspan class="text-highlight">█</tspan>░░░░█░<tspan class="text-highlight">█</tspan>░░░<tspan class="text-highlight">███</tspan>░░░█░░░<tspan class="text-highlight">█░█</tspan>░░░<tspan class="text-highlight">███</tspan>░░█░░░░░░░░░░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</text>
+    </g>
+
+    <!-- The animated scanner bar -->
+    <rect class="scanner-bar" y="0" width="100" height="100%" fill="url(#scanner-gradient)" filter="url(#scanner-glow)" />
+
 </svg>
