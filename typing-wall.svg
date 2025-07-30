@@ -1,0 +1,67 @@
+<svg fill="#CCCCCC" width="800px" height="125px" viewBox="0 0 800 125" xmlns="http://www.w3.org/2000/svg">
+    <!-- 
+        Hey! This is the source code for the animated wall.
+        The magic happens with CSS animations inside this SVG.
+        Feel free to tweak the colors and speed!
+    -->
+    <style>
+        .text {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+            white-space: pre; /* This preserves the spaces and line breaks */
+            fill: #4CAF50; /* A cool green "terminal" color */
+        }
+        .wall {
+            fill: #E0E0E0; /* A light gray for the wall texture */
+        }
+
+        /* The typing animation */
+        .line {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: draw 8s linear forwards;
+        }
+
+        #line1 { animation-delay: 0s; }
+        #line2 { animation-delay: 1.5s; }
+        #line3 { animation-delay: 3s; }
+        #line4 { animation-delay: 4.5s; }
+        #line5 { animation-delay: 6s; }
+
+        @keyframes draw {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        /* The blinking cursor */
+        .cursor {
+            fill: #4CAF50;
+            animation: blink 1s steps(1) infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+
+    <!-- The ASCII Art is broken into lines for the animation -->
+    <text y="20" class="wall">
+        <tspan id="line1" class="line">█████████████████████████████████████████████████████████████████████████████████████████████████████████</tspan>
+    </text>
+    <text y="40" class="text">
+        <tspan id="line2" class="line">█░░░████░░░█░░░░█░░░░░█░░░███░░░█░░░░█░░░░░░░░░░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</tspan>
+    </text>
+    <text y="60" class="text">
+        <tspan id="line3" class="line">▒░░░░█░░░░█░█░░░█░░░░░█░░░█░█░░░█░░░░█░░░░░░░░░░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</tspan>
+    </text>
+    <text y="80" class="text">
+        <tspan id="line4" class="line">░░░░░█░░░░███░░░█░░░░░█░░░██░░░░█░░░░█░░░░░░░░░░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</tspan>
+    </text>
+    <text y="100" class="text">
+        <tspan id="line5" class="line">░░░░░█░░░░█░█░░░███░░░█░░░█░█░░░███░░█░░░░░░░░░░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</tspan>
+        <tspan class="cursor" dy="-3">█</tspan> <!-- The Blinking Cursor -->
+    </text>
+</svg>
