@@ -1,24 +1,21 @@
 <svg width="850" height="150" viewBox="0 0 850 150" fill="none" xmlns="http://www.w3.org/2000/svg">
     <!--
-      "Holographic Scanner" Animation for GitHub Profile
-      Designed to be professional, creative, and clear.
+      INFINITE "Holographic Scanner" Animation
       - A glowing scanner bar reveals the text.
-      - The text has a subtle pulse effect after being revealed.
+      - The text stays visible for a moment.
+      - The animation resets and loops forever.
     -->
     <defs>
-        <!-- Defines the gradient for the scanner bar -->
         <linearGradient id="scanner-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stop-color="#39C5BB" stop-opacity="0" />
             <stop offset="50%" stop-color="#39C5BB" stop-opacity="1" />
             <stop offset="100%" stop-color="#39C5BB" stop-opacity="0" />
         </linearGradient>
 
-        <!-- Defines the blur effect for the scanner glow -->
         <filter id="scanner-glow">
             <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
         </filter>
 
-        <!-- Defines the clip path that reveals the text -->
         <clipPath id="text-clip">
             <rect class="clip-rect" width="0" height="150" />
         </clipPath>
@@ -31,45 +28,38 @@
             white-space: pre;
         }
 
-        .wall-texture { fill: #4A5568; } /* Darker, subtle wall color */
-        .text-main { fill: #A0AEC0; } /* Main text color - light gray */
-        .text-highlight { fill: #39C5BB; } /* Highlighted text color - a vibrant teal */
+        .wall-texture { fill: #4A5568; }
+        .text-main { fill: #A0AEC0; }
+        .text-highlight { fill: #39C5BB; } /* The highlight color is constant now */
 
-        /* Animation for the text reveal */
+        /* --- NEW INFINITE ANIMATION LOGIC --- */
+        /* The total animation loop is 8 seconds */
+
+        /* 1. The clip-path reveals the text over 4 seconds, holds it for 3 seconds, then resets */
         .clip-rect {
-            animation: reveal 4s ease-out forwards;
-            animation-delay: 0.5s;
+            animation: reveal-infinite 8s linear infinite;
         }
 
-        @keyframes reveal {
-            from { width: 0; }
-            to { width: 100%; }
+        @keyframes reveal-infinite {
+            0% { width: 0; }
+            50% { width: 850px; } /* 0s -> 4s: Reveal */
+            87.5% { width: 850px; } /* 4s -> 7s: Hold */
+            100% { width: 0; } /* 7s -> 8s: Reset */
         }
         
-        /* Animation for the scanner bar */
+        /* 2. The scanner bar moves with the reveal, then hides and resets */
         .scanner-bar {
-            animation: scan 4s ease-out forwards;
-            animation-delay: 0.5s;
+            animation: scan-infinite 8s linear infinite;
         }
 
-        @keyframes scan {
-            from { x: 0; }
-            to { x: 100%; }
-        }
-
-        /* Animation for the text pulse after reveal */
-        .text-highlight {
-            animation: pulse 2.5s infinite;
-            animation-delay: 4.5s; /* Starts after the scan is complete */
-        }
-        
-        @keyframes pulse {
-            0%, 100% { fill: #39C5BB; }
-            50% { fill: #81E6D9; } /* A lighter shade for the pulse */
+        @keyframes scan-infinite {
+            0% { transform: translateX(0px); }
+            50% { transform: translateX(850px); } /* Scans across the screen */
+            50.01%, 100% { transform: translateX(-150px); } /* Instantly moves off-screen to wait for the next loop */
         }
     </style>
 
-    <!-- Background (optional, for a contained look) -->
+    <!-- Background -->
     <rect width="100%" height="100%" fill="#0D1117" />
 
     <!-- The ASCII Art to be revealed -->
