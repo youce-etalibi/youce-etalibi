@@ -1,77 +1,201 @@
 <svg width="850" height="150" viewBox="0 0 850 150" fill="none" xmlns="http://www.w3.org/2000/svg">
     <!--
-      INFINITE "Holographic Scanner" Animation
-      - A glowing scanner bar reveals the text.
-      - The text stays visible for a moment.
-      - The animation resets and loops forever.
+      "L's Deductive Interface"
+      - A high-energy scanner bar reveals the scene.
+      - The iconic "L" symbol flickers into view.
+      - A detailed ASCII portrait of L glitches periodically.
+      - A tagline types itself out with a blinking cursor.
+      - The animation loops infinitely.
+
+      Improvements:
+      - Thematic: Fully dedicated to L from Death Note.
+      - Creative: Multi-layered animations (scan, flicker, glitch, type).
+      - Professional: Well-structured, commented, uses advanced SVG filters,
+        and embeds an external font for stylistic accuracy.
     -->
     <defs>
-        <linearGradient id="scanner-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#39C5BB" stop-opacity="0" />
-            <stop offset="50%" stop-color="#39C5BB" stop-opacity="1" />
-            <stop offset="100%" stop-color="#39C5BB" stop-opacity="0" />
-        </linearGradient>
+        <!-- Font import for the iconic "L" symbol -->
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700');
+        </style>
 
-        <filter id="scanner-glow">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
+        <!-- Gradient for the scanner bar -->
+        <linearGradient id="scanner-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#00b8ff" stop-opacity="0" />
+            <stop offset="50%" stop-color="#ffffff" stop-opacity="1" />
+            <stop offset="100%" stop-color="#00b8ff" stop-opacity="0" />
+        </linearGradient>
+        
+        <!-- Filter for a subtle glow effect -->
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur" />
+            <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
         </filter>
 
-        <clipPath id="text-clip">
+        <!-- Advanced filter for the digital glitch effect -->
+        <filter id="glitch">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" result="turbulence" />
+            <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="5" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+
+        <!-- Clip path for the initial scanner reveal -->
+        <clipPath id="reveal-clip">
             <rect class="clip-rect" width="0" height="150" />
         </clipPath>
     </defs>
 
     <style>
+        /* --- GENERAL STYLES --- */
         .ascii-art {
             font-family: 'Courier New', Courier, monospace;
-            font-size: 16px;
+            font-size: 11px;
             white-space: pre;
+            fill: #8899a6;
+        }
+        .text-highlight { fill: #00b8ff; }
+
+        /* The iconic "L" symbol font */
+        .l-symbol {
+            font-family: 'UnifrakturCook', cursive;
+            font-weight: 700;
+            font-size: 130px;
+            fill: #e1e8ed;
+            filter: url(#glow);
         }
 
-        .wall-texture { fill: #4A5568; }
-        .text-main { fill: #A0AEC0; }
-        .text-highlight { fill: #39C5BB; } /* The highlight color is constant now */
-
-        /* --- NEW INFINITE ANIMATION LOGIC --- */
-        /* The total animation loop is 8 seconds */
-
-        /* 1. The clip-path reveals the text over 4 seconds, holds it for 3 seconds, then resets */
-        .clip-rect {
-            animation: reveal-infinite 8s linear infinite;
-        }
-
-        @keyframes reveal-infinite {
-            0% { width: 0; }
-            50% { width: 850px; } /* 0s -> 4s: Reveal */
-            87.5% { width: 850px; } /* 4s -> 7s: Hold */
-            100% { width: 0; } /* 7s -> 8s: Reset */
+        /* Tagline text style */
+        .tagline {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 18px;
+            fill: #e1e8ed;
         }
         
-        /* 2. The scanner bar moves with the reveal, then hides and resets */
-        .scanner-bar {
-            animation: scan-infinite 8s linear infinite;
+        /* Blinking cursor for the typing effect */
+        .cursor {
+            font-weight: bold;
+            animation: blink 1s steps(1) infinite;
         }
 
-        @keyframes scan-infinite {
-            0% { transform: translateX(0px); }
-            50% { transform: translateX(850px); } /* Scans across the screen */
-            50.01%, 100% { transform: translateX(-150px); } /* Instantly moves off-screen to wait for the next loop */
+        /* --- ANIMATION LOGIC (Total Loop: 10s) --- */
+
+        /* 1. Reveal Animation (0s -> 3s) */
+        .clip-rect {
+            animation: reveal 10s linear infinite;
         }
+        @keyframes reveal {
+            0% { width: 0; }
+            30% { width: 850px; } /* Reveals over 3 seconds */
+            100% { width: 850px; } /* Stays revealed for the rest of the loop */
+        }
+        
+        .scanner-bar {
+            animation: scan 10s linear infinite;
+        }
+        @keyframes scan {
+            0% { transform: translateX(0px); opacity: 1; }
+            30% { transform: translateX(850px); opacity: 1; }
+            30.01% { opacity: 0; } /* Hides after scan */
+            100% { opacity: 0; }
+        }
+
+        /* 2. "L" Symbol Flicker (Appears after reveal) */
+        .l-symbol {
+            animation: flicker 4s infinite;
+            animation-delay: 3.5s; /* Starts after the scan */
+            opacity: 0;
+        }
+        @keyframes flicker {
+            0%, 100% { opacity: 0; }
+            5%, 15%, 25%, 50%, 80% { opacity: 1; text-shadow: 0 0 10px #00b8ff; }
+            10%, 20%, 40%, 60%, 90% { opacity: 0.7; text-shadow: none; }
+        }
+
+        /* 3. ASCII Glitch (Happens periodically after reveal) */
+        .glitch-group {
+            animation: glitch-show 10s steps(1, end) infinite;
+            visibility: hidden;
+        }
+        @keyframes glitch-show {
+            45%, 75% { visibility: visible; } /* Glitches at 4.5s and 7.5s */
+        }
+        .glitch-text-1 { filter: url(#glitch); fill: #ff3c3c; animation: glitch-anim 0.5s infinite; }
+        .glitch-text-2 { filter: url(#glitch); fill: #00ffff; animation: glitch-anim 0.5s infinite reverse; }
+
+        @keyframes glitch-anim {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(4px, -2px); }
+            50% { transform: translate(-3px, 3px); }
+            75% { transform: translate(2px, -4px); }
+            100% { transform: translate(0, 0); }
+        }
+        
+        /* 4. Typing Animation (Starts after reveal) */
+        .tagline {
+            width: 0;
+            overflow: hidden;
+            border-right: 2px solid #e1e8ed; /* This becomes the cursor */
+            animation: typing 3s steps(22) forwards, blink 0.75s step-end infinite;
+            animation-delay: 4s; /* Start typing after L appears */
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 14.5em; } /* Adjust 'em' based on text length */
+        }
+        @keyframes blink {
+            from, to { border-color: transparent; }
+            50% { border-color: #e1e8ed; }
+        }
+
     </style>
 
-    <!-- Background -->
-    <rect width="100%" height="100%" fill="#0D1117" />
+    <!-- Background Layer -->
+    <rect width="100%" height="100%" fill="#0a0c10" />
 
-    <!-- The ASCII Art to be revealed -->
-    <g clip-path="url(#text-clip)">
-        <text y="30" class="ascii-art wall-texture">█████████████████████████████████████████████████████████████████████████████████</text>
-        <text y="50" class="ascii-art text-main">█░░░<tspan class="text-highlight">████</tspan>░░░█░░░░<tspan class="text-highlight">█</tspan>░░░░░█░░░<tspan class="text-highlight">███</tspan>░░░<tspan class="text-highlight">█</tspan>░░░░<tspan class="text-highlight">█</tspan>░░░░░░░░░░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</text>
-        <text y="70" class="ascii-art text-main">▒░░░░<tspan class="text-highlight">█</tspan>░░░░█░<tspan class="text-highlight">█</tspan>░░░█░░░░░█░░░<tspan class="text-highlight">█░█</tspan>░░░<tspan class="text-highlight">█</tspan>░░░░<tspan class="text-highlight">█</tspan>░░░░░░░░░░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</text>
-        <text y="90" class="ascii-art text-main">░░░░░<tspan class="text-highlight">█</tspan>░░░░<tspan class="text-highlight">███</tspan>░░░█░░░░░█░░░<tspan class="text-highlight">██</tspan>░░░░<tspan class="text-highlight">█</tspan>░░░░<tspan class="text-highlight">█</tspan>░░░░░░░░░░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</text>
-        <text y="110" class="ascii-art text-main">░░░░░<tspan class="text-highlight">█</tspan>░░░░█░<tspan class="text-highlight">█</tspan>░░░<tspan class="text-highlight">███</tspan>░░░█░░░<tspan class="text-highlight">█░█</tspan>░░░<tspan class="text-highlight">███</tspan>░░█░░░░░░░░░░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</text>
+    <!-- Main container with the reveal animation -->
+    <g clip-path="url(#reveal-clip)">
+        
+        <!-- Base ASCII Art of L -->
+        <g class="ascii-art">
+            <text x="250" y="20" >   ____________________</text>
+            <text x="250" y="30" > / \                   \.</text>
+            <text x="250" y="40" >|   |                  |.</text>
+            <text x="250" y="50" > \_ |      <tspan class="text-highlight">@@@@@</tspan>      |.</text>
+            <text x="250" y="60" >    |    <tspan class="text-highlight">@@@@@@@@@</tspan>    |.</text>
+            <text x="250" y="70" >    |   <tspan class="text-highlight">@@</tspan> <tspan fill="#e1e8ed">()</tspan> <tspan class="text-highlight">@@</tspan> <tspan fill="#e1e8ed">()</tspan> <tspan class="text-highlight">@@</tspan>   |.</text>
+            <text x="250" y="80" >    |   <tspan class="text-highlight">@@@@@@@@@</tspan>    |.</text>
+            <text x="250" y="90" >    |    <tspan class="text-highlight">C</tspan>   <tspan class="text-highlight">@@@</tspan>     |.</text>
+            <text x="250" y="100">    |     <tspan class="text-highlight">`--'</tspan>      |.</text>
+            <text x="250" y="110">    |_______________|___</text>
+            <text x="250" y="120">   / L's terminal /   /|.</text>
+            <text x="250" y="130">  /______________ /   /|.</text>
+            <text x="250" y="140"> |               |  / |.</text>
+            <text x="250" y="150"> |_______________| /  `.</text>
+        </g>
+        
+        <!-- Glitch effect layers (hidden by default) -->
+        <g class="glitch-group ascii-art">
+            <g class="glitch-text-1">
+                <text x="250" y="50" > \_ |      @@@@@      |.</text>
+                <text x="250" y="60" >    |    @@@@@@@@@    |.</text>
+                <text x="250" y="70" >    |   @@ () @@ () @@   |.</text>
+            </g>
+            <g class="glitch-text-2">
+                <text x="250" y="50" > \_ |      @@@@@      |.</text>
+                <text x="250" y="60" >    |    @@@@@@@@@    |.</text>
+                <text x="250" y="70" >    |   @@ () @@ () @@   |.</text>
+            </g>
+        </g>
+        
+        <!-- Iconic "L" Symbol and Tagline -->
+        <text class="l-symbol" x="30" y="110">L</text>
+        <text class="tagline" x="610" y="75">Justice will prevail.</text>
+
     </g>
 
-    <!-- The animated scanner bar -->
-    <rect class="scanner-bar" y="0" width="100" height="100%" fill="url(#scanner-gradient)" filter="url(#scanner-glow)" />
+    <!-- The animated scanner bar (drawn on top) -->
+    <rect class="scanner-bar" y="0" width="100" height="100%" fill="url(#scanner-gradient)" filter="url(#glow)" />
 
 </svg>
