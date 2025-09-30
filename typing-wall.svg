@@ -1,92 +1,127 @@
 <svg width="850" height="150" viewBox="0 0 850 150" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
-        <!-- Gradient for scanner -->
+        <!-- NEW: Death Note Blue Color -->
         <linearGradient id="scanner-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#00E5FF" stop-opacity="0" />
-            <stop offset="50%" stop-color="#00E5FF" stop-opacity="1" />
-            <stop offset="100%" stop-color="#00E5FF" stop-opacity="0" />
+            <stop offset="0%" stop-color="#3498DB" stop-opacity="0" />
+            <stop offset="50%" stop-color="#3498DB" stop-opacity="1" />
+            <stop offset="100%" stop-color="#3498DB" stop-opacity="0" />
         </linearGradient>
 
-        <!-- Glow effect -->
+        <!-- Glow effect for the scanner -->
         <filter id="scanner-glow">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
+            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
             <feMerge>
                 <feMergeNode in="blur"/>
                 <feMergeNode in="SourceGraphic"/>
             </feMerge>
         </filter>
 
-        <!-- Clip path for reveal -->
+        <!-- Clip path for text reveal animation -->
         <clipPath id="text-clip">
             <rect class="clip-rect" width="0" height="150" />
         </clipPath>
+
+        <!-- NEW IDEA: Glitch Effect Filter -->
+        <filter id="glitch">
+            <feTurbulence type="fractalNoise" baseFrequency="0.005 0.005" numOctaves="1" result="turbulence" />
+            <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="3" xChannelSelector="R" yChannelSelector="G" />
+            <animate attributeName="baseFrequency" dur="0.15s" keyTimes="0;0.5;1" values="0.01 0.02;0.02 0.03;0.01 0.02" repeatCount="indefinite" />
+        </filter>
     </defs>
 
     <style>
+        /* General Setup */
         .ascii-art {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 16px;
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            font-size: 24px; /* Increased font size for better visibility */
             white-space: pre;
         }
 
-        .wall-texture { fill: #2D3748; }
-        .text-main { fill: #E2E8F0; }
-        .text-highlight { fill: #00E5FF; }
+        /* Color Palette */
+        .text-base     { fill: #A0AEC0; } /* Grey for the fill */
+        .text-highlight{ fill: #3498DB; } /* Thematic L-Blue */
 
-        /* Animation: reveal text */
-        .clip-rect {
-            animation: reveal-infinite 8s linear infinite;
+        /* NEW: Authentic Death Note L Font */
+        .deathnote-L {
+            font-family: 'Old English Text MT', 'Cloister Black', 'Times New Roman', serif;
+            font-size: 180px;
+            fill: rgba(52, 152, 219, 0.08); /* Using the new blue, but very transparent */
+            font-weight: 500;
         }
 
-        @keyframes reveal-infinite {
-            0% { width: 0; }
-            50% { width: 850px; }
-            87.5% { width: 850px; }
+        /* --- Animations --- */
+
+        /* Text reveal animation driven by the scanner */
+        .clip-rect {
+            /* Timed to match the scanner's pass */
+            animation: reveal-text 6s ease-in-out infinite;
+        }
+        @keyframes reveal-text {
+            0%   { width: 0; }
+            50%  { width: 850px; }
+            80%  { width: 850px; } /* Hold */
             100% { width: 0; }
         }
 
-        /* Scanner movement */
+        /* IMPROVED: Scanner bar animation */
         .scanner-bar {
-            animation: scan-infinite 8s linear infinite, flicker 0.15s infinite;
+            /* A smoother, more complete patrol cycle */
+            animation: scan-across 6s ease-in-out infinite, flicker 0.2s infinite;
+        }
+        @keyframes scan-across {
+            0%   { transform: translateX(-150px); opacity: 0; }
+            10%  { opacity: 1; }
+            50%  { transform: translateX(850px); opacity: 1; }
+            60%  { opacity: 0; }
+            100% { transform: translateX(-150px); opacity: 0; }
         }
 
-        @keyframes scan-infinite {
-            0% { transform: translateX(0px); }
-            50% { transform: translateX(850px); }
-            50.01%, 100% { transform: translateX(-150px); }
-        }
-
-        /* Subtle flicker for hacker vibe */
+        /* Subtle flicker for the scanner */
         @keyframes flicker {
             0%, 100% { opacity: 0.9; }
-            50% { opacity: 1; }
-            75% { opacity: 0.85; }
+            50%      { opacity: 1; }
         }
 
-        /* Death Note L watermark */
-        .deathnote-L {
-            font-family: "Times New Roman", serif;
-            font-size: 160px;
-            fill: rgba(255, 255, 255, 0.08);
-            font-weight: bold;
+        /* NEW IDEA: Apply the glitch effect subtly */
+        .glitch-text {
+            filter: url(#glitch);
+            opacity: 0;
+            animation: show-glitch 6s linear infinite;
+        }
+
+        /* Syncs the glitch appearance with the main text */
+        @keyframes show-glitch {
+            0%   { opacity: 0; }
+            4%   { opacity: 1; } /* Glitch appears just as text is revealed */
+            48%  { opacity: 1; }
+            52%  { opacity: 0; } /* Glitch disappears as text is fully revealed */
+            100% { opacity: 0; }
         }
     </style>
 
-    <!-- Background -->
-    <rect width="100%" height="100%" fill="#0A0A0A" />
+    <!-- 1. Background -->
+    <rect width="100%" height="100%" fill="#1A202C" /> <!-- Darker, less black background -->
 
-    <!-- Death Note L watermark -->
-    <text x="650" y="125" class="deathnote-L">L</text>
+    <!-- 2. Death Note L Watermark (Updated) -->
+    <text x="630" y="135" class="deathnote-L">L</text>
 
-    <!-- ASCII Art -->
+    <!-- 3. Main ASCII Art for "TALIBI" -->
     <g clip-path="url(#text-clip)">
-        <text y="30" class="ascii-art wall-texture">█████████████████████████████████████████████████████████████████████████████████</text>
-        <text y="50" class="ascii-art text-main">█░░░<tspan class="text-highlight">████</tspan>░░░█░░░░<tspan class="text-highlight">█</tspan>░░░░░█░░░<tspan class="text-highlight">███</tspan>░░░<tspan class="text-highlight">█</tspan>░░░░<tspan class="text-highlight">█</tspan>░░░░░░░░░░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</text>
-        <text y="70" class="ascii-art text-main">▒░░░░<tspan class="text-highlight">█</tspan>░░░░█░<tspan class="text-highlight">█</tspan>░░░█░░░░░█░░░<tspan class="text-highlight">█░█</tspan>░░░<tspan class="text-highlight">█</tspan>░░░░<tspan class="text-highlight">█</tspan>░░░░░░░░░░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</text>
-        <text y="90" class="ascii-art text-main">░░░░░<tspan class="text-highlight">█</tspan>░░░░<tspan class="text-highlight">███</tspan>░░░█░░░░░█░░░<tspan class="text-highlight">██</tspan>░░░░<tspan class="text-highlight">█</tspan>░░░░<tspan class="text-highlight">█</tspan>░░░░░░░░░░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</text>
-        <text y="110" class="ascii-art text-main">░░░░░<tspan class="text-highlight">█</tspan>░░░░█░<tspan class="text-highlight">█</tspan>░░░<tspan class="text-highlight">███</tspan>░░░█░░░<tspan class="text-highlight">█░█</tspan>░░░<tspan class="text-highlight">███</tspan>░░█░░░░░░░░░░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</text>
+        <!-- Base text layer -->
+        <text y="40"  class="ascii-art text-base">██████  ███   ██    ██ ██████ ██</text>
+        <text y="65"  class="ascii-art text-base">  ██   ██ ██  ██    ██   ██   ██</text>
+        <text y="90"  class="ascii-art text-base">  ██   █████  ██    ██   ██   ██</text>
+        <text y="115" class="ascii-art text-base">  ██   ██ ██  ██████ ██   ██   ██</text>
+
+        <!-- Highlight layer (the "glitchy" copy) -->
+        <g class="glitch-text">
+            <text y="40"  class="ascii-art text-highlight">██████  ███   ██    ██ ██████ ██</text>
+            <text y="65"  class="ascii-art text-highlight">  ██   ██ ██  ██    ██   ██   ██</text>
+            <text y="90"  class="ascii-art text-highlight">  ██   █████  ██    ██   ██   ██</text>
+            <text y="115" class="ascii-art text-highlight">  ██   ██ ██  ██████ ██   ██   ██</text>
+        </g>
     </g>
 
-    <!-- Scanner bar -->
-    <rect class="scanner-bar" y="0" width="100" height="100%" fill="url(#scanner-gradient)" filter="url(#scanner-glow)" />
+    <!-- 4. Animated Scanner Bar -->
+    <rect class="scanner-bar" y="0" width="150" height="100%" fill="url(#scanner-gradient)" filter="url(#scanner-glow)" />
 </svg>
