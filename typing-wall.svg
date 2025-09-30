@@ -108,17 +108,21 @@
     <!-- 3. Main ASCII Art for "TALIBI" -->
     <g clip-path="url(#text-clip)">
         <!-- Base text layer -->
-        <text y="40"  class="ascii-art text-base">██████  ███   ██    ██ ██████ ██</text>
-        <text y="65"  class="ascii-art text-base">  ██   ██ ██  ██    ██   ██   ██</text>
-        <text y="90"  class="ascii-art text-base">  ██   █████  ██    ██   ██   ██</text>
-        <text y="115" class="ascii-art text-base">  ██   ██ ██  ██████ ██   ██   ██</text>
+        <text y="40"  class="ascii-art text-base">██████  ███   ██     ██   ██████    ██  </text>
+        <text y="65"  class="ascii-art text-base">  ██   ██ ██  ██     ██   ██   ██   ██   </text>
+        <text y="90"  class="ascii-art text-base">  ██   █████  ██     ██   ██ ██     ██   </text>
+        <text y="115" class="ascii-art text-base">  ██   ██ ██  ██     ██   ██   ██   ██   </text>
+        <text y="115" class="ascii-art text-base">  ██   ██ ██  ██████ ██   ██████    ██   </text>
 
         <!-- Highlight layer (the "glitchy" copy) -->
         <g class="glitch-text">
-            <text y="40"  class="ascii-art text-highlight">██████  ███   ██    ██ ██████ ██</text>
-            <text y="65"  class="ascii-art text-highlight">  ██   ██ ██  ██    ██   ██   ██</text>
-            <text y="90"  class="ascii-art text-highlight">  ██   █████  ██    ██   ██   ██</text>
-            <text y="115" class="ascii-art text-highlight">  ██   ██ ██  ██████ ██   ██   ██</text>
+
+
+        <text y="40"  class="ascii-art text-highlight">██████  ███   ██     ██   ██████    ██  </text>
+        <text y="65"  class="ascii-art text-highlight">  ██   ██ ██  ██     ██   ██   ██   ██   </text>
+        <text y="90"  class="ascii-art text-highlight">  ██   █████  ██     ██   ██ ██     ██   </text>
+        <text y="115" class="ascii-art text-highlight">  ██   ██ ██  ██     ██   ██   ██   ██   </text>
+        <text y="115" class="ascii-art text-highlight">  ██   ██ ██  ██████ ██   ██████    ██   </text>
         </g>
     </g>
 
