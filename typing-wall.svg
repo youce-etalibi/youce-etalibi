@@ -1,178 +1,131 @@
-<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
-  <!-- Cyberpunk gradient background -->
-  <defs>
-    <linearGradient id="cyberGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0f0c29" />
-      <stop offset="50%" stop-color="#302b63" />
-      <stop offset="100%" stop-color="#24243e" />
-    </linearGradient>
+<svg width="850" height="150" viewBox="0 0 850 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="scanner-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#3498DB" stop-opacity="0" />
+            <stop offset="50%" stop-color="#3498DB" stop-opacity="0.8" />
+            <stop offset="100%" stop-color="#3498DB" stop-opacity="0" />
+        </linearGradient>
+
+        <!-- Cyber Glow -->
+        <filter id="glow">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
+            <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+
+        <!-- Glitch Displacement -->
+        <filter id="glitch">
+            <feTurbulence type="fractalNoise" baseFrequency="0.01 0.1" numOctaves="1" result="warp" />
+            <feDisplacementMap in="SourceGraphic" in2="warp" scale="4" xChannelSelector="R" yChannelSelector="G" />
+            <animate attributeName="baseFrequency" dur="0.1s" values="0.01 0.1;0.05 0.5;0.01 0.1" repeatCount="indefinite" />
+        </filter>
+
+        <clipPath id="text-clip">
+            <rect class="clip-rect" width="0" height="150">
+                <animate attributeName="width" dur="4s" values="0;850;850;0" keyTimes="0;0.5;0.8;1" repeatCount="indefinite" />
+            </rect>
+        </clipPath>
+    </defs>
+
+    <style>
+        .ascii-art {
+            font-family: 'Courier New', monospace;
+            font-size: 22px;
+            font-weight: bold;
+            white-space: pre;
+        }
+        
+        /* The Hand-Drawn Doodle Style from your Avatar */
+        .doodle {
+            stroke: #3498DB;
+            stroke-width: 3;
+            stroke-linecap: round;
+            fill: none;
+            filter: drop-shadow(0 0 5px #3498DB);
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: draw 4s ease-in-out infinite;
+        }
+
+        @keyframes draw {
+            0% { stroke-dashoffset: 1000; opacity: 0; }
+            40% { stroke-dashoffset: 0; opacity: 1; }
+            80% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .deathnote-L {
+            font-family: 'Old English Text MT', serif;
+            font-size: 140px;
+            fill: rgba(52, 152, 219, 0.15);
+            animation: flicker 0.5s infinite;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.1; }
+            50% { opacity: 0.3; }
+            52% { opacity: 0.1; }
+            100% { opacity: 0.2; }
+        }
+
+        .scan-line {
+            width: 100%;
+            height: 2px;
+            background: rgba(52, 152, 219, 0.1);
+            position: absolute;
+            animation: scanline 3s linear infinite;
+        }
+
+        .scanner-bar {
+            animation: move-scanner 4s ease-in-out infinite;
+        }
+
+        @keyframes move-scanner {
+            0% { transform: translateX(-150px); }
+            50% { transform: translateX(850px); }
+            100% { transform: translateX(-150px); }
+        }
+    </style>
+
+    <!-- Background Layer -->
+    <rect width="100%" height="100%" fill="#0D1117" />
     
-    <linearGradient id="neonPink" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#ff00cc" />
-      <stop offset="100%" stop-color="#3333ff" />
-    </linearGradient>
-    
-    <linearGradient id="terminalGreen" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#00ff00" />
-      <stop offset="100%" stop-color="#00cc00" />
-    </linearGradient>
-    
-    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="3" result="blur" />
-      <feMerge>
-        <feMergeNode in="blur" />
-        <feMergeNode in="SourceGraphic" />
-      </feMerge>
-    </filter>
-    
-    <!-- Matrix-style code rain -->
-    <g id="matrixChar">
-      <text x="0" y="0" font-family="Monaco, monospace" font-size="14" fill="#00ff00" opacity="0.8">0</text>
-      <text x="0" y="18" font-family="Monaco, monospace" font-size="14" fill="#00ff00" opacity="0.6">1</text>
+    <!-- Grid Pattern Overlay -->
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#3498DB" stroke-width="0.5" stroke-opacity="0.1"/>
+    </pattern>
+    <rect width="100%" height="100%" fill="url(#grid)" />
+
+    <!-- Pulsing L -->
+    <text x="650" y="120" class="deathnote-L">L</text>
+
+    <!-- Main Name Group -->
+    <g filter="url(#glow)">
+        <g clip-path="url(#text-clip)">
+            <!-- ASCII Text -->
+            <text y="35" class="ascii-art" fill="#3498DB" opacity="0.4">██████  ███   ██     ██   ██████    ██  </text>
+            <text y="58" class="ascii-art" fill="#3498DB" opacity="0.6">  ██   ██ ██  ██     ██   ██   ██   ██   </text>
+            <text y="81" class="ascii-art" fill="#3498DB" opacity="0.8">  ██   █████  ██     ██   ██ ██     ██   </text>
+            <text y="104" class="ascii-art" fill="#3498DB">  ██   ██ ██  ██     ██   ██   ██   ██   </text>
+            <text y="127" class="ascii-art" fill="#3498DB">  ██   ██ ██  ██████ ██   ██████    ██   </text>
+        </g>
+        
+        <!-- THE DOODLES (Matching your Avatar) -->
+        <!-- Eyebrows -->
+        <path d="M120,20 Q150,5 180,25" class="doodle" />
+        <path d="M220,15 Q260,0 300,20" class="doodle" />
+        <!-- Smirk -->
+        <path d="M140,110 Q200,130 280,105" class="doodle" />
+        <circle cx="280" cy="105" r="2" fill="#3498DB" class="doodle" />
     </g>
-  </defs>
-  
-  <!-- Background -->
-  <rect width="800" height="600" fill="url(#cyberGradient)" />
-  
-  <!-- Matrix code rain effect -->
-  <g id="matrixRain" opacity="0.3">
-    <use href="#matrixChar" x="50" y="10" />
-    <use href="#matrixChar" x="120" y="40" />
-    <use href="#matrixChar" x="200" y="70" />
-    <use href="#matrixChar" x="280" y="20" />
-    <use href="#matrixChar" x="350" y="90" />
-    <use href="#matrixChar" x="430" y="30" />
-    <use href="#matrixChar" x="500" y="60" />
-    <use href="#matrixChar" x="580" y="10" />
-    <use href="#matrixChar" x="650" y="80" />
-    <use href="#matrixChar" x="730" y="40" />
-  </g>
-  
-  <!-- Main error console -->
-  <g id="console">
-    <!-- Console window -->
-    <rect x="50" y="40" width="700" height="500" rx="15" fill="#0a0a0a" stroke="#ff00cc" stroke-width="3" opacity="0.9" />
-    
-    <!-- Title bar -->
-    <rect x="50" y="40" width="700" height="40" rx="15" fill="#1a1a1a" />
-    <circle cx="70" cy="60" r="8" fill="#ff5f57" />
-    <circle cx="95" cy="60" r="8" fill="#ffbd2e" />
-    <circle cx="120" cy="60" r="8" fill="#28ca42" />
-    <text x="180" y="65" font-family="'Segoe UI', monospace" font-size="16" fill="#ffffff" font-weight="bold">🐍 DJANGO ERROR TERMINAL</text>
-    
-    <!-- Error content -->
-    <g font-family="'Fira Code', 'Monaco', monospace" font-size="12" fill="#00ff00">
-      <!-- Python path error -->
-      <text x="70" y="100" fill="#ff00cc">$ python manage.py migrate</text>
-      <text x="70" y="125" fill="#ff3333">Traceback (most recent call last):</text>
-      
-      <!-- File trace -->
-      <text x="90" y="150" fill="#00ffff">File "C:\Users\admin10\Desktop\Warmix_Local\manage.py", line 22, in &lt;module&gt;</text>
-      <text x="110" y="170">main()</text>
-      <text x="90" y="195" fill="#00ffff">File "C:\Users\admin10\Desktop\Warmix_Local\manage.py", line 18, in main</text>
-      <text x="110" y="215">execute_from_command_line(sys.argv)</text>
-      
-      <!-- Cascading error effect -->
-      <g fill="#ffcc00">
-        <text x="70" y="250">[ERROR WAVE] ⬇⬇⬇</text>
-        <animateTransform attributeName="transform" type="translate" values="0,0; 0,2; 0,0" dur="1s" repeatCount="indefinite" />
-      </g>
-      
-      <!-- Critical error highlight -->
-      <g filter="url(#glow)">
-        <text x="70" y="280" font-size="14" fill="#ff0066" font-weight="bold">
-          ModuleNotFoundError: No module named 'tzlocal'
-        </text>
-        <text x="70" y="305" fill="#00ffff">File "C:\Users\admin10\Desktop\Warmix_Local\app\views.py", line 7686</text>
-      </g>
+
+    <!-- Glitch Overlay layer (Flickers on) -->
+    <g filter="url(#glitch)" opacity="0.3">
+        <text y="81" class="ascii-art" fill="#E74C3C">  ██   █████  ██     ██   ██ ██     ██   </text>
     </g>
-    
-    <!-- Solution box -->
-    <g id="solution" transform="translate(70, 350)">
-      <rect width="660" height="150" rx="10" fill="#001122" stroke="#00ffff" stroke-width="2" opacity="0.8" />
-      <text x="20" y="30" font-family="'Segoe UI', monospace" font-size="16" fill="#00ffff" font-weight="bold">🚀 QUICK FIX (Gen Z Edition):</text>
-      
-      <!-- Command buttons -->
-      <g transform="translate(20, 60)">
-        <rect width="200" height="40" rx="8" fill="#1a1a1a" />
-        <text x="20" y="27" font-family="'Fira Code', monospace" font-size="14" fill="#00ff00">📦 pip install tzlocal</text>
-        <!-- Hover effect -->
-        <rect width="200" height="40" rx="8" fill="#00ff00" fill-opacity="0" style="cursor: pointer;">
-          <animate attributeName="fill-opacity" values="0;0.2;0" dur="2s" repeatCount="indefinite" />
-        </rect>
-      </g>
-      
-      <g transform="translate(240, 60)">
-        <rect width="250" height="40" rx="8" fill="#1a1a1a" />
-        <text x="20" y="27" font-family="'Fira Code', monospace" font-size="14" fill="#00ff00">🐍 python -m pip install tzlocal</text>
-      </g>
-      
-      <g transform="translate(510, 60)">
-        <rect width="130" height="40" rx="8" fill="#1a1a1a" />
-        <text x="20" y="27" font-family="'Fira Code', monospace" font-size="14" fill="#00ff00">🔧 requirements.txt</text>
-      </g>
-      
-      <!-- Pro tip -->
-      <g transform="translate(20, 120)">
-        <text x="0" y="0" font-family="'Segoe UI', monospace" font-size="14" fill="#ffcc00">💡 Pro Tip: Always run </text>
-        <text x="180" y="0" font-family="'Fira Code', monospace" font-size="14" fill="#00ff00">pip freeze > requirements.txt</text>
-        <text x="0" y="25" font-family="'Segoe UI', monospace" font-size="14" fill="#ffcc00">   to save your dependencies! 😎</text>
-      </g>
-    </g>
-  </g>
-  
-  <!-- Animated emoji reactions -->
-  <g id="reactions">
-    <g transform="translate(600, 20)">
-      <text x="0" y="0" font-size="30">😱</text>
-      <animateTransform attributeName="transform" type="translate" values="600,20; 600,15; 600,20" dur="1s" repeatCount="indefinite" />
-    </g>
-    
-    <g transform="translate(650, 15)">
-      <text x="0" y="0" font-size="30">🤦‍♂️</text>
-      <animateTransform attributeName="transform" type="rotate" values="0; -5; 0; 5; 0" dur="2s" repeatCount="indefinite" />
-    </g>
-    
-    <g transform="translate(700, 20)">
-      <text x="0" y="0" font-size="30">💀</text>
-      <animateTransform attributeName="transform" type="scale" values="1; 1.2; 1" dur="1.5s" repeatCount="indefinite" />
-    </g>
-  </g>
-  
-  <!-- Status bar -->
-  <g id="statusBar">
-    <rect x="0" y="570" width="800" height="30" fill="#000000" opacity="0.8" />
-    <text x="20" y="590" font-family="'Fira Code', monospace" font-size="12" fill="#00ff00">🟢 (venv) PS C:\Users\admin10\Desktop\Warmix_Local></text>
-    <text x="400" y="590" font-family="'Fira Code', monospace" font-size="12" fill="#ff00cc">⚠️ Missing dependency detected</text>
-    <text x="700" y="590" font-family="'Fira Code', monospace" font-size="12" fill="#00ffff">Press F to fix 🔧</text>
-    
-    <!-- Blinking cursor -->
-    <rect x="280" y="575" width="8" height="20" fill="#00ff00">
-      <animate attributeName="opacity" values="1;0;1" dur="0.8s" repeatCount="indefinite" />
-    </rect>
-  </g>
-  
-  <!-- Floating debug icons -->
-  <g id="debugIcons" opacity="0.6">
-    <circle cx="750" cy="200" r="30" fill="#ff00cc" fill-opacity="0.2" stroke="#ff00cc" stroke-width="2">
-      <animate attributeName="r" values="30;35;30" dur="2s" repeatCount="indefinite" />
-    </circle>
-    <text x="750" y="205" text-anchor="middle" font-family="Arial" font-size="20" fill="#ffffff">🐛</text>
-    
-    <circle cx="50" cy="300" r="25" fill="#00ffff" fill-opacity="0.2" stroke="#00ffff" stroke-width="2">
-      <animate attributeName="cy" values="300;305;300" dur="3s" repeatCount="indefinite" />
-    </circle>
-    <text x="50" y="305" text-anchor="middle" font-family="Arial" font-size="18" fill="#ffffff">🔍</text>
-  </g>
-  
-  <!-- Title -->
-  <text x="400" y="30" text-anchor="middle" font-family="'Segoe UI', monospace" font-size="28" fill="url(#neonPink)" font-weight="bold">
-    DJANGO ERROR VISUALIZER 3000 🚀
-  </text>
-  
-  <!-- Subtitles -->
-  <text x="400" y="560" text-anchor="middle" font-family="'Segoe UI', monospace" font-size="14" fill="#cccccc">
-    Made with ❤️ for Gen Z Devs | Refresh (F5) to see animations
-  </text>
+
+    <!-- Scanner -->
+    <rect class="scanner-bar" y="0" width="100" height="100%" fill="url(#scanner-gradient)" />
 </svg>
