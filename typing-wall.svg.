@@ -1,67 +1,131 @@
-<svg fill="#CCCCCC" width="800px" height="125px" viewBox="0 0 800 125" xmlns="http://www.w3.org/2000/svg">
-    <!-- 
-        Hey! This is the source code for the animated wall.
-        The magic happens with CSS animations inside this SVG.
-        Feel free to tweak the colors and speed!
-    -->
-    <style>
-        .text {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 16px;
-            white-space: pre; /* This preserves the spaces and line breaks */
-            fill: #4CAF50; /* A cool green "terminal" color */
-        }
-        .wall {
-            fill: #E0E0E0; /* A light gray for the wall texture */
-        }
+<svg width="850" height="150" viewBox="0 0 850 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="scanner-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#3498DB" stop-opacity="0" />
+            <stop offset="50%" stop-color="#3498DB" stop-opacity="0.8" />
+            <stop offset="100%" stop-color="#3498DB" stop-opacity="0" />
+        </linearGradient>
 
-        /* The typing animation */
-        .line {
+        <!-- Cyber Glow -->
+        <filter id="glow">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
+            <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+
+        <!-- Glitch Displacement -->
+        <filter id="glitch">
+            <feTurbulence type="fractalNoise" baseFrequency="0.01 0.1" numOctaves="1" result="warp" />
+            <feDisplacementMap in="SourceGraphic" in2="warp" scale="4" xChannelSelector="R" yChannelSelector="G" />
+            <animate attributeName="baseFrequency" dur="0.1s" values="0.01 0.1;0.05 0.5;0.01 0.1" repeatCount="indefinite" />
+        </filter>
+
+        <clipPath id="text-clip">
+            <rect class="clip-rect" width="0" height="150">
+                <animate attributeName="width" dur="4s" values="0;850;850;0" keyTimes="0;0.5;0.8;1" repeatCount="indefinite" />
+            </rect>
+        </clipPath>
+    </defs>
+
+    <style>
+        .ascii-art {
+            font-family: 'Courier New', monospace;
+            font-size: 22px;
+            font-weight: bold;
+            white-space: pre;
+        }
+        
+        /* The Hand-Drawn Doodle Style from your Avatar */
+        .doodle {
+            stroke: #3498DB;
+            stroke-width: 3;
+            stroke-linecap: round;
+            fill: none;
+            filter: drop-shadow(0 0 5px #3498DB);
             stroke-dasharray: 1000;
             stroke-dashoffset: 1000;
-            animation: draw 8s linear forwards;
+            animation: draw 4s ease-in-out infinite;
         }
-
-        #line1 { animation-delay: 0s; }
-        #line2 { animation-delay: 1.5s; }
-        #line3 { animation-delay: 3s; }
-        #line4 { animation-delay: 4.5s; }
-        #line5 { animation-delay: 6s; }
 
         @keyframes draw {
-            to {
-                stroke-dashoffset: 0;
-            }
+            0% { stroke-dashoffset: 1000; opacity: 0; }
+            40% { stroke-dashoffset: 0; opacity: 1; }
+            80% { opacity: 1; }
+            100% { opacity: 0; }
         }
 
-        /* The blinking cursor */
-        .cursor {
-            fill: #4CAF50;
-            animation: blink 1s steps(1) infinite;
+        .deathnote-L {
+            font-family: 'Old English Text MT', serif;
+            font-size: 140px;
+            fill: rgba(52, 152, 219, 0.15);
+            animation: flicker 0.5s infinite;
         }
 
-        @keyframes blink {
-            50% {
-                opacity: 0;
-            }
+        @keyframes flicker {
+            0% { opacity: 0.1; }
+            50% { opacity: 0.3; }
+            52% { opacity: 0.1; }
+            100% { opacity: 0.2; }
+        }
+
+        .scan-line {
+            width: 100%;
+            height: 2px;
+            background: rgba(52, 152, 219, 0.1);
+            position: absolute;
+            animation: scanline 3s linear infinite;
+        }
+
+        .scanner-bar {
+            animation: move-scanner 4s ease-in-out infinite;
+        }
+
+        @keyframes move-scanner {
+            0% { transform: translateX(-150px); }
+            50% { transform: translateX(850px); }
+            100% { transform: translateX(-150px); }
         }
     </style>
 
-    <!-- The ASCII Art is broken into lines for the animation -->
-    <text y="20" class="wall">
-        <tspan id="line1" class="line">█████████████████████████████████████████████████████████████████████████████████████████████████████████</tspan>
-    </text>
-    <text y="40" class="text">
-        <tspan id="line2" class="line">█░░░████░░░█░░░░█░░░░░█░░░███░░░█░░░░█░░░░░░░░░░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</tspan>
-    </text>
-    <text y="60" class="text">
-        <tspan id="line3" class="line">▒░░░░█░░░░█░█░░░█░░░░░█░░░█░█░░░█░░░░█░░░░░░░░░░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</tspan>
-    </text>
-    <text y="80" class="text">
-        <tspan id="line4" class="line">░░░░░█░░░░███░░░█░░░░░█░░░██░░░░█░░░░█░░░░░░░░░░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</tspan>
-    </text>
-    <text y="100" class="text">
-        <tspan id="line5" class="line">░░░░░█░░░░█░█░░░███░░░█░░░█░█░░░███░░█░░░░░░░░░░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</tspan>
-        <tspan class="cursor" dy="-3">█</tspan> <!-- The Blinking Cursor -->
-    </text>
+    <!-- Background Layer -->
+    <rect width="100%" height="100%" fill="#0D1117" />
+    
+    <!-- Grid Pattern Overlay -->
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#3498DB" stroke-width="0.5" stroke-opacity="0.1"/>
+    </pattern>
+    <rect width="100%" height="100%" fill="url(#grid)" />
+
+    <!-- Pulsing L -->
+    <text x="650" y="120" class="deathnote-L">L</text>
+
+    <!-- Main Name Group -->
+    <g filter="url(#glow)">
+        <g clip-path="url(#text-clip)">
+            <!-- ASCII Text -->
+            <text y="35" class="ascii-art" fill="#3498DB" opacity="0.4">██████  ███   ██     ██   ██████    ██  </text>
+            <text y="58" class="ascii-art" fill="#3498DB" opacity="0.6">  ██   ██ ██  ██     ██   ██   ██   ██   </text>
+            <text y="81" class="ascii-art" fill="#3498DB" opacity="0.8">  ██   █████  ██     ██   ██ ██     ██   </text>
+            <text y="104" class="ascii-art" fill="#3498DB">  ██   ██ ██  ██     ██   ██   ██   ██   </text>
+            <text y="127" class="ascii-art" fill="#3498DB">  ██   ██ ██  ██████ ██   ██████    ██   </text>
+        </g>
+        
+        <!-- THE DOODLES (Matching your Avatar) -->
+        <!-- Eyebrows -->
+        <path d="M120,20 Q150,5 180,25" class="doodle" />
+        <path d="M220,15 Q260,0 300,20" class="doodle" />
+        <!-- Smirk -->
+        <path d="M140,110 Q200,130 280,105" class="doodle" />
+        <circle cx="280" cy="105" r="2" fill="#3498DB" class="doodle" />
+    </g>
+
+    <!-- Glitch Overlay layer (Flickers on) -->
+    <g filter="url(#glitch)" opacity="0.3">
+        <text y="81" class="ascii-art" fill="#E74C3C">  ██   █████  ██     ██   ██ ██     ██   </text>
+    </g>
+
+    <!-- Scanner -->
+    <rect class="scanner-bar" y="0" width="100" height="100%" fill="url(#scanner-gradient)" />
 </svg>
