@@ -1,131 +1,76 @@
-<svg width="850" height="150" viewBox="0 0 850 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-        <linearGradient id="scanner-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#3498DB" stop-opacity="0" />
-            <stop offset="50%" stop-color="#3498DB" stop-opacity="0.8" />
-            <stop offset="100%" stop-color="#3498DB" stop-opacity="0" />
-        </linearGradient>
-
-        <!-- Cyber Glow -->
-        <filter id="glow">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
-            <feMerge>
-                <feMergeNode in="blur"/>
-                <feMergeNode in="SourceGraphic"/>
-            </feMerge>
-        </filter>
-
-        <!-- Glitch Displacement -->
-        <filter id="glitch">
-            <feTurbulence type="fractalNoise" baseFrequency="0.01 0.1" numOctaves="1" result="warp" />
-            <feDisplacementMap in="SourceGraphic" in2="warp" scale="4" xChannelSelector="R" yChannelSelector="G" />
-            <animate attributeName="baseFrequency" dur="0.1s" values="0.01 0.1;0.05 0.5;0.01 0.1" repeatCount="indefinite" />
-        </filter>
-
-        <clipPath id="text-clip">
-            <rect class="clip-rect" width="0" height="150">
-                <animate attributeName="width" dur="4s" values="0;850;850;0" keyTimes="0;0.5;0.8;1" repeatCount="indefinite" />
-            </rect>
-        </clipPath>
-    </defs>
-
-    <style>
-        .ascii-art {
-            font-family: 'Courier New', monospace;
-            font-size: 22px;
-            font-weight: bold;
-            white-space: pre;
-        }
-        
-        /* The Hand-Drawn Doodle Style from your Avatar */
-        .doodle {
-            stroke: #3498DB;
-            stroke-width: 3;
-            stroke-linecap: round;
-            fill: none;
-            filter: drop-shadow(0 0 5px #3498DB);
-            stroke-dasharray: 1000;
-            stroke-dashoffset: 1000;
-            animation: draw 4s ease-in-out infinite;
-        }
-
-        @keyframes draw {
-            0% { stroke-dashoffset: 1000; opacity: 0; }
-            40% { stroke-dashoffset: 0; opacity: 1; }
-            80% { opacity: 1; }
-            100% { opacity: 0; }
-        }
-
-        .deathnote-L {
-            font-family: 'Old English Text MT', serif;
-            font-size: 140px;
-            fill: rgba(52, 152, 219, 0.15);
-            animation: flicker 0.5s infinite;
-        }
-
-        @keyframes flicker {
-            0% { opacity: 0.1; }
-            50% { opacity: 0.3; }
-            52% { opacity: 0.1; }
-            100% { opacity: 0.2; }
-        }
-
-        .scan-line {
-            width: 100%;
-            height: 2px;
-            background: rgba(52, 152, 219, 0.1);
-            position: absolute;
-            animation: scanline 3s linear infinite;
-        }
-
-        .scanner-bar {
-            animation: move-scanner 4s ease-in-out infinite;
-        }
-
-        @keyframes move-scanner {
-            0% { transform: translateX(-150px); }
-            50% { transform: translateX(850px); }
-            100% { transform: translateX(-150px); }
-        }
-    </style>
-
-    <!-- Background Layer -->
-    <rect width="100%" height="100%" fill="#0D1117" />
-    
-    <!-- Grid Pattern Overlay -->
-    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#3498DB" stroke-width="0.5" stroke-opacity="0.1"/>
+<svg width="1200" height="420" viewBox="0 0 1200 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{html.escape(name)} GitHub profile cover">
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="45%" r="75%">
+      <stop offset="0%" stop-color="#163BFF" stop-opacity="0.9"/>
+      <stop offset="42%" stop-color="#071A7A" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#020617" stop-opacity="1"/>
+    </radialGradient>
+    <linearGradient id="neon" x1="0" y1="0" x2="1200" y2="420">
+      <stop offset="0%" stop-color="#00E5FF"/>
+      <stop offset="45%" stop-color="#4F46E5"/>
+      <stop offset="75%" stop-color="#B026FF"/>
+      <stop offset="100%" stop-color="#00F5D4"/>
+    </linearGradient>
+    <linearGradient id="visor" x1="430" y1="60" x2="785" y2="345">
+      <stop offset="0%" stop-color="#64F4FF" stop-opacity="0.95"/>
+      <stop offset="36%" stop-color="#1C6BFF" stop-opacity="0.42"/>
+      <stop offset="69%" stop-color="#9D4DFF" stop-opacity="0.34"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.88"/>
+    </linearGradient>
+    <filter id="blurGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.0  0 0 0 0 0.55  0 0 0 0 1  0 0 0 0.85 0"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softShadow">
+      <feDropShadow dx="0" dy="0" stdDeviation="12" flood-color="#00E5FF" flood-opacity="0.45"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="28" flood-color="#7C3AED" flood-opacity="0.45"/>
+    </filter>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse">
+      <path d="M44 0H0V44" stroke="#60A5FA" stroke-opacity="0.08"/>
     </pattern>
-    <rect width="100%" height="100%" fill="url(#grid)" />
+  </defs>
 
-    <!-- Pulsing L -->
-    <text x="650" y="120" class="deathnote-L">L</text>
+  <rect width="1200" height="420" rx="34" fill="url(#bgGlow)"/>
+  <rect width="1200" height="420" rx="34" fill="url(#grid)"/>
+  
+  <g opacity="0.55" filter="url(#blurGlow)">
+    <circle cx="900" cy="88" r="92" fill="#2563EB" opacity="0.45"/>
+    <circle cx="225" cy="328" r="135" fill="#7C3AED" opacity="0.25"/>
+    <circle cx="606" cy="213" r="175" fill="#00E5FF" opacity="0.14"/>
+  </g>
 
-    <!-- Main Name Group -->
-    <g filter="url(#glow)">
-        <g clip-path="url(#text-clip)">
-            <!-- ASCII Text -->
-            <text y="35" class="ascii-art" fill="#3498DB" opacity="0.4">██████  ███   ██     ██   ██████    ██  </text>
-            <text y="58" class="ascii-art" fill="#3498DB" opacity="0.6">  ██   ██ ██  ██     ██   ██   ██   ██   </text>
-            <text y="81" class="ascii-art" fill="#3498DB" opacity="0.8">  ██   █████  ██     ██   ██ ██     ██   </text>
-            <text y="104" class="ascii-art" fill="#3498DB">  ██   ██ ██  ██     ██   ██   ██   ██   </text>
-            <text y="127" class="ascii-art" fill="#3498DB">  ██   ██ ██  ██████ ██   ██████    ██   </text>
-        </g>
-        
-        <!-- THE DOODLES (Matching your Avatar) -->
-        <!-- Eyebrows -->
-        <path d="M120,20 Q150,5 180,25" class="doodle" />
-        <path d="M220,15 Q260,0 300,20" class="doodle" />
-        <!-- Smirk -->
-        <path d="M140,110 Q200,130 280,105" class="doodle" />
-        <circle cx="280" cy="105" r="2" fill="#3498DB" class="doodle" />
+  <!-- abstract faceless neon portrait inspired by the generated image -->
+  <g transform="translate(105 12)">
+    <path d="M206 361C175 314 160 269 168 219C177 158 219 103 280 82C328 66 385 80 419 118C455 158 464 217 449 271C436 319 400 355 352 374C306 392 242 390 206 361Z" fill="#06113D" opacity="0.82"/>
+    <path d="M221 69C270 27 352 34 400 86C449 140 444 240 394 300C351 352 276 367 225 323C177 282 163 202 184 137C191 112 203 86 221 69Z" fill="url(#visor)" opacity="0.34" stroke="#7DD3FC" stroke-opacity="0.7" stroke-width="2"/>
+    <path d="M188 226C253 181 337 147 435 119" stroke="#A855F7" stroke-width="10" stroke-linecap="round" opacity="0.72" filter="url(#softShadow)"/>
+    <path d="M196 232C265 188 344 153 427 128" stroke="#7DD3FC" stroke-width="6" stroke-linecap="round" opacity="0.94"/>
+    <path d="M170 300C254 320 344 316 441 282" stroke="#22D3EE" stroke-width="5" stroke-linecap="round" opacity="0.65" filter="url(#softShadow)"/>
+    <path d="M211 118C235 80 303 56 365 84" stroke="#93C5FD" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+    <path d="M176 364C226 334 396 334 456 371L506 420H110L176 364Z" fill="#0B102B" opacity="0.95"/>
+    <path d="M134 409C206 361 398 354 520 410" stroke="#38BDF8" stroke-opacity="0.58" stroke-width="3"/>
+    <circle cx="438" cy="120" r="10" fill="#F8FAFC" filter="url(#softShadow)"/>
+    <circle cx="174" cy="229" r="7" fill="#67E8F9" filter="url(#softShadow)"/>
+  </g>
+
+  <!-- content -->
+  <g transform="translate(560 118)">
+    <text x="0" y="0" fill="#BAE6FD" opacity="0.86" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="5">DIGITAL PROFILE</text>
+    <text x="0" y="76" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="66" font-weight="900" letter-spacing="2">{html.escape(name)}</text>
+    <rect x="0" y="103" width="420" height="3" rx="2" fill="url(#neon)" filter="url(#softShadow)"/>
+    <text x="0" y="153" fill="#CBD5E1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22" font-weight="500">Creative Developer • Futuristic Visual Identity</text>
+    <g transform="translate(0 197)">
+      <rect x="0" y="0" width="164" height="44" rx="22" fill="#0F172A" fill-opacity="0.72" stroke="#38BDF8" stroke-opacity="0.65"/>
+      <text x="24" y="29" fill="#E0F2FE" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">PORTFOLIO</text>
+      <rect x="184" y="0" width="134" height="44" rx="22" fill="#0F172A" fill-opacity="0.72" stroke="#A855F7" stroke-opacity="0.65"/>
+      <text x="208" y="29" fill="#F3E8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">GITHUB</text>
     </g>
+  </g>
 
-    <!-- Glitch Overlay layer (Flickers on) -->
-    <g filter="url(#glitch)" opacity="0.3">
-        <text y="81" class="ascii-art" fill="#E74C3C">  ██   █████  ██     ██   ██ ██     ██   </text>
-    </g>
-
-    <!-- Scanner -->
-    <rect class="scanner-bar" y="0" width="100" height="100%" fill="url(#scanner-gradient)" />
+  <path d="M0 350C162 302 292 302 433 338C588 378 750 419 1200 330V420H0V350Z" fill="#020617" opacity="0.46"/>
+  <rect x="1.5" y="1.5" width="1197" height="417" rx="32.5" stroke="url(#neon)" stroke-opacity="0.45" stroke-width="3"/>
 </svg>
