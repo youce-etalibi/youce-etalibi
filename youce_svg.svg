@@ -1,229 +1,243 @@
-<svg width="850" height="150" viewBox="0 0 850 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-        <!-- ====== BACKGROUND: deep electric blue atmosphere (like the photo) ====== -->
-        <radialGradient id="bg-atmo" cx="55%" cy="45%" r="85%">
-            <stop offset="0%"  stop-color="#1d3fd6"/>
-            <stop offset="35%" stop-color="#132a9e"/>
-            <stop offset="70%" stop-color="#0b1a5e"/>
-            <stop offset="100%" stop-color="#060c2a"/>
-        </radialGradient>
+<svg viewBox="0 0 1200 480" width="1200" height="480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TALIBI futuristic portfolio cover">
+  <defs>
+    <!-- Neon chrome gradient for letters -->
+    <linearGradient id="neon" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#d8fbff"/>
+      <stop offset="40%" stop-color="#3de8ff"/>
+      <stop offset="75%" stop-color="#3b7bff"/>
+      <stop offset="100%" stop-color="#b43bff"/>
+    </linearGradient>
 
-        <!-- soft fog patches -->
-        <radialGradient id="fog" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#3b6cff" stop-opacity="0.35"/>
-            <stop offset="100%" stop-color="#3b6cff" stop-opacity="0"/>
-        </radialGradient>
+    <linearGradient id="horizon" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff3bd4" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#ff3bd4" stop-opacity="0.55"/>
+    </linearGradient>
 
-        <!-- ====== THE VISOR BEAM: white-hot core -> blue -> violet edges ====== -->
-        <linearGradient id="beam-core" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%"   stop-color="#7fb8ff" stop-opacity="0"/>
-            <stop offset="35%"  stop-color="#cfe6ff" stop-opacity="0.9"/>
-            <stop offset="50%"  stop-color="#ffffff"/>
-            <stop offset="65%"  stop-color="#bfa8ff" stop-opacity="0.9"/>
-            <stop offset="100%" stop-color="#8a4dff" stop-opacity="0"/>
-        </linearGradient>
+    <radialGradient id="ambient" cx="50%" cy="40%" r="70%">
+      <stop offset="0%"  stop-color="#0c1a33" stop-opacity="1"/>
+      <stop offset="60%" stop-color="#070b18" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#03040a" stop-opacity="0"/>
+    </radialGradient>
 
-        <linearGradient id="beam-halo" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%"   stop-color="#2b4fff" stop-opacity="0"/>
-            <stop offset="45%"  stop-color="#5e8bff" stop-opacity="0.55"/>
-            <stop offset="60%"  stop-color="#a86bff" stop-opacity="0.5"/>
-            <stop offset="100%" stop-color="#c44dff" stop-opacity="0"/>
-        </linearGradient>
+    <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#fff" stop-opacity="0"/>
+      <stop offset="47%"  stop-color="#fff" stop-opacity="0"/>
+      <stop offset="50%"  stop-color="#e6fcff" stop-opacity="0.9"/>
+      <stop offset="53%"  stop-color="#fff" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
 
-        <!-- ====== NAME GRADIENT: icy blue -> electric blue -> violet -> magenta ====== -->
-        <linearGradient id="name-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%"  stop-color="#cfe9ff"/>
-            <stop offset="35%" stop-color="#6ea8ff"/>
-            <stop offset="70%" stop-color="#8a6bff"/>
-            <stop offset="100%" stop-color="#d65cff"/>
-        </linearGradient>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="75%">
+      <stop offset="0%"  stop-color="#000" stop-opacity="0"/>
+      <stop offset="70%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.7"/>
+    </radialGradient>
 
-        <!-- glass bubble rim -->
-        <linearGradient id="bubble-rim" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%"   stop-color="#dff0ff" stop-opacity="0.9"/>
-            <stop offset="45%"  stop-color="#6ea8ff" stop-opacity="0.25"/>
-            <stop offset="100%" stop-color="#8a4dff" stop-opacity="0.6"/>
-        </linearGradient>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="9" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
 
-        <radialGradient id="bubble-fill" cx="40%" cy="35%" r="70%">
-            <stop offset="0%"  stop-color="#bcd9ff" stop-opacity="0.16"/>
-            <stop offset="60%" stop-color="#4d6bff" stop-opacity="0.06"/>
-            <stop offset="100%" stop-color="#4d6bff" stop-opacity="0"/>
-        </radialGradient>
+    <filter id="softGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
 
-        <!-- lens flare core -->
-        <radialGradient id="flare" cx="50%" cy="50%" r="50%">
-            <stop offset="0%"  stop-color="#ffffff"/>
-            <stop offset="20%" stop-color="#cfe6ff" stop-opacity="0.9"/>
-            <stop offset="60%" stop-color="#6ea8ff" stop-opacity="0.35"/>
-            <stop offset="100%" stop-color="#6ea8ff" stop-opacity="0"/>
-        </radialGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.035 0"/>
+    </filter>
 
-        <!-- scanner sweep -->
-        <linearGradient id="scanner-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%"   stop-color="#9fd0ff" stop-opacity="0"/>
-            <stop offset="50%"  stop-color="#9fd0ff" stop-opacity="0.5"/>
-            <stop offset="100%" stop-color="#9fd0ff" stop-opacity="0"/>
-        </linearGradient>
-
-        <!-- glows -->
-        <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="2.2" result="blur"/>
-            <feMerge>
-                <feMergeNode in="blur"/>
-                <feMergeNode in="SourceGraphic"/>
-            </feMerge>
-        </filter>
-
-        <filter id="glow-big" x="-80%" y="-80%" width="260%" height="260%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="blur"/>
-            <feMerge>
-                <feMergeNode in="blur"/>
-                <feMergeNode in="SourceGraphic"/>
-            </feMerge>
-        </filter>
-
-        <!-- glitch -->
-        <filter id="glitch">
-            <feTurbulence type="fractalNoise" baseFrequency="0.01 0.1" numOctaves="1" result="warp"/>
-            <feDisplacementMap in="SourceGraphic" in2="warp" scale="4" xChannelSelector="R" yChannelSelector="G"/>
-            <animate attributeName="baseFrequency" dur="0.1s" values="0.01 0.1;0.05 0.5;0.01 0.1" repeatCount="indefinite"/>
-        </filter>
-
-        <clipPath id="text-clip">
-            <rect class="clip-rect" width="0" height="150">
-                <animate attributeName="width" dur="4s" values="0;850;850;0" keyTimes="0;0.5;0.8;1" repeatCount="indefinite"/>
-            </rect>
-        </clipPath>
-
-        <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#7fb8ff" stroke-width="0.5" stroke-opacity="0.07"/>
-        </pattern>
-    </defs>
+    <clipPath id="titleClip">
+      <text x="600" y="240" text-anchor="middle" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" font-weight="900" font-size="142" letter-spacing="26">TALIBI</text>
+    </clipPath>
 
     <style>
-        .ascii-art {
-            font-family: 'Courier New', monospace;
-            font-size: 22px;
-            font-weight: bold;
-            white-space: pre;
-        }
+      .letter{
+        font-family:'Arial Black','Helvetica Neue',Arial,sans-serif;
+        font-weight:900; font-size:142px;
+        opacity:0; transform:translateY(34px);
+        animation:rise 1.1s cubic-bezier(.16,.84,.3,1) forwards;
+      }
+      .l1{animation-delay:.15s}.l2{animation-delay:.28s}.l3{animation-delay:.41s}
+      .l4{animation-delay:.54s}.l5{animation-delay:.67s}.l6{animation-delay:.80s}
 
-        /* hand-drawn doodles, now icy-white blue like the visor light */
-        .doodle {
-            stroke: #cfe6ff;
-            stroke-width: 3;
-            stroke-linecap: round;
-            fill: none;
-            filter: drop-shadow(0 0 6px #6ea8ff) drop-shadow(0 0 14px #2b4fff);
-            stroke-dasharray: 1000;
-            stroke-dashoffset: 1000;
-            animation: draw 4s ease-in-out infinite;
-        }
+      .titleGroup{animation:glitch 7s steps(1) 3s infinite}
 
-        @keyframes draw {
-            0%   { stroke-dashoffset: 1000; opacity: 0; }
-            40%  { stroke-dashoffset: 0; opacity: 1; }
-            80%  { opacity: 1; }
-            100% { opacity: 0; }
-        }
+      .outline{
+        fill:none; stroke:#3de8ff; stroke-width:1.3;
+        stroke-dasharray:900; stroke-dashoffset:900; opacity:.5;
+        animation:draw 2.4s ease forwards .1s;
+      }
+      .sweepBar{animation:sweep 4.5s ease-in-out 1.8s infinite}
 
-        .deathnote-L {
-            font-family: 'Old English Text MT', serif;
-            font-size: 140px;
-            fill: rgba(159, 208, 255, 0.12);
-            animation: flicker 0.5s infinite;
-        }
+      .gridLine{stroke:#1d3a66;stroke-width:1;opacity:0;animation:fade .9s ease forwards}
+      .gv{animation-delay:.6s}.gh{animation-delay:.9s}
+      .horizonGlow{opacity:0;animation:fade 1.4s ease forwards 1s}
 
-        @keyframes flicker {
-            0%   { opacity: 0.10; }
-            50%  { opacity: 0.28; }
-            52%  { opacity: 0.10; }
-            100% { opacity: 0.18; }
-        }
+      .circuit{
+        fill:none;stroke:#2a6ea8;stroke-width:1.2;
+        stroke-dasharray:520;stroke-dashoffset:520;
+        animation:draw 2.2s ease forwards 1.1s;
+      }
+      .pulse{fill:#3de8ff;animation:travel 3.2s linear 2.4s infinite}
+      .pulse2{fill:#ff3bd4;animation:travel 3.8s linear 3s infinite}
+      .node{fill:#0a1428;stroke:#3de8ff;stroke-width:1.2;opacity:0;animation:fade .8s ease forwards 2s}
 
-        .scanner-bar { animation: move-scanner 4s ease-in-out infinite; }
-        @keyframes move-scanner {
-            0%   { transform: translateX(-150px); }
-            50%  { transform: translateX(850px); }
-            100% { transform: translateX(-150px); }
-        }
+      .ring{transform-origin:600px 215px;opacity:0;animation:fade 1.2s ease forwards 1.3s, spin 26s linear 1.3s infinite}
+      .ring2{transform-origin:600px 215px;opacity:0;animation:fade 1.2s ease forwards 1.5s, spinR 34s linear 1.5s infinite}
 
-        /* the visor beam breathes like the photo's light */
-        .beam { animation: pulse 3s ease-in-out infinite; }
-        @keyframes pulse {
-            0%, 100% { opacity: 0.85; }
-            50%      { opacity: 1; }
-        }
+      .hud{stroke:#3de8ff;stroke-width:1.2;fill:none;opacity:0;animation:fade 1s ease forwards 2s}
+      .hudText{font-family:'Courier New',monospace;font-size:13px;letter-spacing:4px;fill:#5e7ba6;opacity:0;animation:fade 1.2s ease forwards 2.3s}
+      .blink{animation:fade 1.2s ease forwards 2.3s, blinkA 2.4s steps(1) 3.5s infinite}
 
-        .flare-star { animation: twinkle 2.4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.7; transform: scale(1); }
-            50%      { opacity: 1;   transform: scale(1.25); }
-        }
+      .scan{fill:#3de8ff;opacity:.08;animation:scanMove 6s linear 2.5s infinite}
+
+      .rule{stroke:#3de8ff;stroke-width:1;opacity:.8;transform-origin:600px 290px;transform:scaleX(0);animation:rule 1.1s cubic-bezier(.2,.8,.2,1) forwards 1.4s}
+      .sub{font-family:'Courier New',monospace;font-size:20px;letter-spacing:13px;fill:#8fa8d6;opacity:0;animation:fade 1.4s ease forwards 1.9s}
+
+      .p{fill:#3de8ff;opacity:0}
+      .pm{fill:#ff3bd4}
+      .p1{animation:drift 9s linear 2s infinite}
+      .p2{animation:drift 12s linear 3.2s infinite}
+      .p3{animation:drift 10s linear 4.1s infinite}
+      .p4{animation:drift 14s linear 2.6s infinite}
+      .p5{animation:drift 11s linear 5s infinite}
+      .glowPulse{animation:pulseA 6s ease-in-out 2s infinite}
+
+      @keyframes rise{to{opacity:1;transform:translateY(0)}}
+      @keyframes draw{to{stroke-dashoffset:0}}
+      @keyframes sweep{0%{transform:translateX(-1200px)}45%,100%{transform:translateX(1200px)}}
+      @keyframes rule{to{transform:scaleX(1)}}
+      @keyframes fade{to{opacity:1}}
+      @keyframes pulseA{0%,100%{opacity:.6}50%{opacity:1}}
+      @keyframes spin{to{transform:rotate(360deg)}}
+      @keyframes spinR{to{transform:rotate(-360deg)}}
+      @keyframes blinkA{0%,60%{opacity:1}61%,100%{opacity:.15}}
+      @keyframes scanMove{0%{transform:translateY(-40px)}100%{transform:translateY(520px)}}
+      @keyframes travel{
+        0%{opacity:0;transform:translateX(0)}
+        8%{opacity:1}
+        92%{opacity:1}
+        100%{opacity:0;transform:translateX(190px)}
+      }
+      @keyframes glitch{
+        0%,93%,100%{transform:translate(0,0)}
+        94%{transform:translate(-4px,2px)}
+        95%{transform:translate(4px,-2px)}
+        96%{transform:translate(-2px,0)}
+        97%{transform:translate(0,0)}
+      }
+      @keyframes drift{
+        0%{opacity:0;transform:translateY(0)}
+        12%{opacity:.8}
+        88%{opacity:.5}
+        100%{opacity:0;transform:translateY(-170px)}
+      }
+      @media (prefers-reduced-motion: reduce){
+        *{animation:none !important}
+        .letter,.outline,.rule,.sub,.hud,.hudText,.node,.gridLine,.horizonGlow,.ring,.ring2,.circuit{opacity:1;transform:none;stroke-dashoffset:0}
+        .sweepBar,.p,.scan,.pulse,.pulse2{opacity:0}
+      }
     </style>
+  </defs>
 
-    <!-- ====== BACKGROUND ====== -->
-    <rect width="100%" height="100%" fill="url(#bg-atmo)"/>
-    <ellipse cx="180" cy="140" rx="260" ry="90" fill="url(#fog)" opacity="0.7"/>
-    <ellipse cx="700" cy="20"  rx="220" ry="80" fill="url(#fog)" opacity="0.5"/>
-    <rect width="100%" height="100%" fill="url(#grid)"/>
+  <!-- Background -->
+  <rect width="1200" height="480" fill="#03040a"/>
+  <rect width="1200" height="480" fill="url(#ambient)" class="glowPulse"/>
 
-    <!-- ====== GLASS BUBBLE (helmet) wrapping the L ====== -->
-    <g>
-        <ellipse cx="675" cy="75" rx="130" ry="68" fill="url(#bubble-fill)"/>
-        <ellipse cx="675" cy="75" rx="130" ry="68" fill="none" stroke="url(#bubble-rim)" stroke-width="2.5" filter="url(#glow)"/>
-        <!-- specular highlight on the glass -->
-        <path d="M570,45 Q620,12 700,14" stroke="#eaf4ff" stroke-width="2" stroke-linecap="round" opacity="0.6" fill="none" filter="url(#glow)"/>
-    </g>
+  <!-- Perspective grid floor -->
+  <g>
+    <line class="gridLine gv" x1="600" y1="350" x2="600"  y2="480"/>
+    <line class="gridLine gv" x1="600" y1="350" x2="420"  y2="480"/>
+    <line class="gridLine gv" x1="600" y1="350" x2="240"  y2="480"/>
+    <line class="gridLine gv" x1="600" y1="350" x2="40"   y2="480"/>
+    <line class="gridLine gv" x1="600" y1="350" x2="-200" y2="480"/>
+    <line class="gridLine gv" x1="600" y1="350" x2="780"  y2="480"/>
+    <line class="gridLine gv" x1="600" y1="350" x2="960"  y2="480"/>
+    <line class="gridLine gv" x1="600" y1="350" x2="1160" y2="480"/>
+    <line class="gridLine gv" x1="600" y1="350" x2="1400" y2="480"/>
+    <line class="gridLine gh" x1="0" y1="368" x2="1200" y2="368"/>
+    <line class="gridLine gh" x1="0" y1="392" x2="1200" y2="392"/>
+    <line class="gridLine gh" x1="0" y1="424" x2="1200" y2="424"/>
+    <line class="gridLine gh" x1="0" y1="462" x2="1200" y2="462"/>
+    <rect class="horizonGlow" x="0" y="320" width="1200" height="32" fill="url(#horizon)"/>
+  </g>
 
-    <!-- Pulsing L inside the bubble -->
-    <text x="640" y="120" class="deathnote-L">L</text>
+  <!-- Rotating holo rings behind title -->
+  <g class="ring" filter="url(#softGlow)">
+    <circle cx="600" cy="215" r="186" fill="none" stroke="#234a7a" stroke-width="1" stroke-dasharray="6 14"/>
+    <circle cx="786" cy="215" r="3" fill="#3de8ff"/>
+  </g>
+  <g class="ring2">
+    <circle cx="600" cy="215" r="226" fill="none" stroke="#3a2a6e" stroke-width="1" stroke-dasharray="2 22"/>
+    <circle cx="600" cy="-11" r="2.5" fill="#ff3bd4"/>
+  </g>
 
-    <!-- ====== DIAGONAL VISOR BEAM crossing the canvas ====== -->
-    <g class="beam">
-        <polygon points="-40,118 890,18 890,46 -40,146" fill="url(#beam-halo)" filter="url(#glow-big)" opacity="0.8"/>
-        <polygon points="-40,124 890,26 890,38 -40,136" fill="url(#beam-core)" filter="url(#glow-big)"/>
-    </g>
+  <!-- Circuit drawings, left + right -->
+  <g>
+    <path class="circuit" d="M40 120 h90 l30 30 h60 v50 l25 25 h55"/>
+    <circle class="node" cx="40" cy="120" r="4"/>
+    <circle class="node" cx="300" cy="225" r="4"/>
+    <rect class="pulse" x="42" y="117.5" width="14" height="5" rx="2.5"/>
 
-    <!-- lens flare at the beam's hot point -->
-    <g class="flare-star" filter="url(#glow-big)">
-        <circle cx="520" cy="66" r="26" fill="url(#flare)"/>
-        <path d="M520,38 L520,94 M492,66 L548,66" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
-        <path d="M503,49 L537,83 M537,49 L503,83" stroke="#cfe6ff" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
-    </g>
-    <!-- small secondary sparkle (top-left, like on the bubble in the photo) -->
+    <path class="circuit" d="M1160 120 h-90 l-30 30 h-60 v50 l-25 25 h-55"/>
+    <circle class="node" cx="1160" cy="120" r="4"/>
+    <circle class="node" cx="900" cy="225" r="4"/>
+    <rect class="pulse2" x="880" y="222.5" width="14" height="5" rx="2.5"/>
+
+    <path class="circuit" d="M120 400 h120 l24 -24 h80"/>
+    <circle class="node" cx="120" cy="400" r="4"/>
+    <path class="circuit" d="M1080 400 h-120 l-24 -24 h-80"/>
+    <circle class="node" cx="1080" cy="400" r="4"/>
+  </g>
+
+  <!-- Drifting particles -->
+  <circle class="p p1" cx="210" cy="330" r="2"/>
+  <circle class="p pm p2" cx="430" cy="365" r="1.5"/>
+  <circle class="p p3" cx="700" cy="350" r="2.2"/>
+  <circle class="p pm p4" cx="930" cy="370" r="1.4"/>
+  <circle class="p p5" cx="1060" cy="320" r="1.8"/>
+
+  <!-- Outline ghost layer -->
+  <text x="600" y="240" text-anchor="middle" class="outline" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" font-weight="900" font-size="142" letter-spacing="26">TALIBI</text>
+
+  <!-- Title letters -->
+  <g class="titleGroup">
     <g filter="url(#glow)">
-        <circle cx="560" cy="22" r="3" fill="#ffffff"/>
-        <path d="M560,12 L560,32 M550,22 L570,22" stroke="#eaf4ff" stroke-width="1.2" opacity="0.8"/>
+      <text class="letter l1" x="282" y="240" text-anchor="middle" fill="url(#neon)">T</text>
+      <text class="letter l2" x="412" y="240" text-anchor="middle" fill="url(#neon)">A</text>
+      <text class="letter l3" x="536" y="240" text-anchor="middle" fill="url(#neon)">L</text>
+      <text class="letter l4" x="642" y="240" text-anchor="middle" fill="url(#neon)">I</text>
+      <text class="letter l5" x="762" y="240" text-anchor="middle" fill="url(#neon)">B</text>
+      <text class="letter l6" x="884" y="240" text-anchor="middle" fill="url(#neon)">I</text>
     </g>
-
-    <!-- ====== MAIN NAME ====== -->
-    <g filter="url(#glow)">
-        <g clip-path="url(#text-clip)">
-            <text y="35"  class="ascii-art" fill="url(#name-grad)" opacity="0.45">██████  ███   ██     ██   ██████    ██  </text>
-            <text y="58"  class="ascii-art" fill="url(#name-grad)" opacity="0.65">  ██   ██ ██  ██     ██   ██   ██   ██   </text>
-            <text y="81"  class="ascii-art" fill="url(#name-grad)" opacity="0.85">  ██   █████  ██     ██   ██ ██     ██   </text>
-            <text y="104" class="ascii-art" fill="url(#name-grad)">  ██   ██ ██  ██     ██   ██   ██   ██   </text>
-            <text y="127" class="ascii-art" fill="url(#name-grad)">  ██   ██ ██  ██████ ██   ██████    ██   </text>
-        </g>
-
-        <!-- doodles (eyebrows + smirk), now in visor-light white-blue -->
-        <path d="M120,20 Q150,5 180,25" class="doodle"/>
-        <path d="M220,15 Q260,0 300,20" class="doodle"/>
-        <path d="M140,110 Q200,130 280,105" class="doodle"/>
-        <circle cx="280" cy="105" r="2" fill="#cfe6ff" class="doodle"/>
+    <!-- Light sweep clipped to letters -->
+    <g clip-path="url(#titleClip)">
+      <rect class="sweepBar" x="0" y="70" width="1200" height="210" fill="url(#sweep)"/>
     </g>
+  </g>
 
-    <!-- glitch ghost layer: magenta like the photo's purple bleed -->
-    <g filter="url(#glitch)" opacity="0.35">
-        <text y="81" class="ascii-art" fill="#d65cff">  ██   █████  ██     ██   ██ ██     ██   </text>
-    </g>
+  <!-- Divider + subtitle -->
+  <line class="rule" x1="430" y1="290" x2="770" y2="290"/>
+  <text class="sub" x="606" y="332" text-anchor="middle">&lt;/ PORTFOLIO &gt;</text>
 
-    <!-- scanner sweep -->
-    <rect class="scanner-bar" y="0" width="100" height="100%" fill="url(#scanner-gradient)"/>
+  <!-- HUD frame + readouts -->
+  <path class="hud" d="M50 56 h54 M50 56 v54 M50 56 l14 -14"/>
+  <path class="hud" d="M1150 56 h-54 M1150 56 v54 M1150 56 l-14 -14"/>
+  <path class="hud" d="M50 430 h54 M50 430 v-54"/>
+  <path class="hud" d="M1150 430 h-54 M1150 430 v-54"/>
+  <text class="hudText" x="66" y="86">SYS.ONLINE</text>
+  <text class="hudText blink" x="1134" y="86" text-anchor="end">REC ●</text>
+  <text class="hudText" x="66" y="416">V.2026</text>
+  <text class="hudText" x="1134" y="416" text-anchor="end">DEV // DESIGN</text>
 
-    <!-- subtle vignette to deepen corners like the photo -->
-    <rect width="100%" height="100%" fill="url(#bg-atmo)" opacity="0" />
-    <rect width="100%" height="100%" fill="#040820" opacity="0.0"/>
+  <!-- Scanline -->
+  <rect class="scan" x="0" y="0" width="1200" height="3"/>
+
+  <!-- Letterbox bars, grain, vignette -->
+  <rect x="0" y="0" width="1200" height="22" fill="#000"/>
+  <rect x="0" y="458" width="1200" height="22" fill="#000"/>
+  <rect width="1200" height="480" filter="url(#grain)" opacity="0.5"/>
+  <rect width="1200" height="480" fill="url(#vignette)"/>
 </svg>
