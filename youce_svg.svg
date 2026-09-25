@@ -1,292 +1,145 @@
-<svg viewBox="0 0 1200 480" width="1200" height="480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TALIBI futuristic animated SVG banner">
+<svg viewBox="0 0 1200 480" width="1200" height="480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TALIBI monochrome hand-drawn sketch banner">
   <defs>
-    <!-- Background -->
-    <radialGradient id="bg" cx="50%" cy="50%" r="75%">
-      <stop offset="0%" stop-color="#123dff"/>
-      <stop offset="35%" stop-color="#0d2ca9"/>
-      <stop offset="70%" stop-color="#08195d"/>
-      <stop offset="100%" stop-color="#030a22"/>
-    </radialGradient>
-
-    <!-- Text gradient -->
-    <linearGradient id="textGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="25%" stop-color="#c8ecff"/>
-      <stop offset="60%" stop-color="#62baff"/>
-      <stop offset="100%" stop-color="#e8f7ff"/>
-    </linearGradient>
-
-    <!-- Glow -->
-    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
-      <feGaussianBlur stdDeviation="7" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
+    <!-- Rough ink distortion -->
+    <filter id="roughInk" x="-10%" y="-20%" width="120%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.045" numOctaves="2" seed="17" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G"/>
     </filter>
 
-    <filter id="bigGlow" x="-40%" y="-40%" width="180%" height="180%">
-      <feGaussianBlur stdDeviation="18" result="blur"/>
-      <feColorMatrix in="blur" type="matrix" values="
+    <!-- Fine scratch distortion -->
+    <filter id="scratchDistort" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="turbulence" baseFrequency="0.025 0.11" numOctaves="1" seed="8" result="turb"/>
+      <feDisplacementMap in="SourceGraphic" in2="turb" scale="2.2" xChannelSelector="R" yChannelSelector="B"/>
+    </filter>
+
+    <!-- Tiny grain, like scanned ink -->
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="
         1 0 0 0 0
         0 1 0 0 0
         0 0 1 0 0
-        0 0 0 0.7 0"/>
+        0 0 0 .12 0"/>
     </filter>
-
-    <filter id="grain">
-      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/>
-      <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.03 0"/>
-    </filter>
-
-    <linearGradient id="trailGrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#57baff" stop-opacity="0"/>
-      <stop offset="50%" stop-color="#57baff" stop-opacity="0.55"/>
-      <stop offset="100%" stop-color="#57baff" stop-opacity="0"/>
-    </linearGradient>
 
     <style>
-      .bgPulse { animation: bgPulse 8s ease-in-out infinite; }
-
-      .grid { animation: gridMove 16s linear infinite; }
-
-      .title {
-        font-family: Orbitron, Rajdhani, Inter, Arial, sans-serif;
-        font-size: 120px;
-        font-weight: 700;
-        fill: url(#textGrad);
-        filter: url(#glow);
+      .word {
+        font-family: Impact, Haettenschweiler, "Arial Narrow Bold", Arial, sans-serif;
+        font-size: 150px;
+        font-weight: 900;
+        letter-spacing: 22px;
+        fill: #fff;
+        filter: url(#roughInk);
       }
 
-      .glowText {
-        font-family: Orbitron, Rajdhani, Inter, Arial, sans-serif;
-        font-size: 120px;
-        font-weight: 700;
-        fill: #4db9ff;
-        opacity: 0.45;
-        filter: url(#bigGlow);
+      .ghost {
+        font-family: Impact, Haettenschweiler, "Arial Narrow Bold", Arial, sans-serif;
+        font-size: 150px;
+        font-weight: 900;
+        letter-spacing: 22px;
+        fill: none;
+        stroke: #fff;
+        stroke-width: 2.2;
+        opacity: .22;
+        filter: url(#scratchDistort);
       }
 
-      .trail1 { animation: dash1 3s linear infinite; }
-      .trail2 { animation: dash2 4s linear infinite; }
-      .spark  { animation: blink 2.6s ease-in-out infinite; }
-
-      /* T enters from left */
-      .tEnter {
-        opacity: 0;
-        animation:
-          tIn 1s cubic-bezier(.2,.8,.2,1) forwards .1s,
-          float 5s ease-in-out infinite 1.5s;
+      .scratch {
+        fill: none;
+        stroke: #fff;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        filter: url(#scratchDistort);
       }
 
-      /* A rises from bottom */
-      .aEnter {
-        opacity: 0;
-        animation:
-          aIn 1.1s cubic-bezier(.2,.8,.2,1) forwards .55s,
-          float 5.5s ease-in-out infinite 1.8s;
-      }
-
-      /* L fades with slight diagonal move */
-      .lEnter {
-        opacity: 0;
-        animation:
-          lIn 1s cubic-bezier(.2,.8,.2,1) forwards .95s,
-          float 5.2s ease-in-out infinite 2s;
-      }
-
-      /* I drops from top */
-      .i1Enter {
-        opacity: 0;
-        animation:
-          iTopIn 1s cubic-bezier(.2,.8,.2,1) forwards 1.3s,
-          float 4.8s ease-in-out infinite 2.2s;
-      }
-
-      /* B rotates in */
-      .bEnter {
-        opacity: 0;
-        animation:
-          bIn 1s cubic-bezier(.2,.8,.2,1) forwards 1.65s,
-          float 5.6s ease-in-out infinite 2.4s;
-        transform-origin: center;
-      }
-
-      /* last I slices in from right */
-      .i2Enter {
-        opacity: 0;
-        animation:
-          iRightIn 1s cubic-bezier(.2,.8,.2,1) forwards 2s,
-          float 5s ease-in-out infinite 2.6s;
-      }
-
-      .scan {
-        animation: scanPass 6.5s ease-in-out infinite 3s;
-      }
-
-      @keyframes tIn {
-        0%   { opacity: 0; transform: translateX(-140px) skewX(-18deg); }
-        100% { opacity: 1; transform: translateX(0) skewX(0deg); }
-      }
-
-      @keyframes aIn {
-        0%   { opacity: 0; transform: translateY(130px) scale(.85); }
-        100% { opacity: 1; transform: translateY(0) scale(1); }
-      }
-
-      @keyframes lIn {
-        0%   { opacity: 0; transform: translate(-60px, 40px); }
-        100% { opacity: 1; transform: translate(0,0); }
-      }
-
-      @keyframes iTopIn {
-        0%   { opacity: 0; transform: translateY(-150px) scaleY(1.4); }
-        100% { opacity: 1; transform: translateY(0) scaleY(1); }
-      }
-
-      @keyframes bIn {
-        0%   { opacity: 0; transform: rotate(-18deg) scale(.8); }
-        100% { opacity: 1; transform: rotate(0deg) scale(1); }
-      }
-
-      @keyframes iRightIn {
-        0%   { opacity: 0; transform: translateX(140px) skewX(16deg); }
-        100% { opacity: 1; transform: translateX(0) skewX(0deg); }
-      }
-
-      @keyframes float {
-        0%,100% { transform: translateY(0); }
-        50% { transform: translateY(-4px); }
-      }
-
-      @keyframes scanPass {
-        0%   { transform: translateX(-1200px); opacity: 0; }
-        12%  { opacity: .9; }
-        40%  { opacity: .35; }
-        100% { transform: translateX(1200px); opacity: 0; }
-      }
-
-      @keyframes dash1 {
-        from { stroke-dashoffset: 0; }
-        to   { stroke-dashoffset: -120; }
-      }
-
-      @keyframes dash2 {
-        from { stroke-dashoffset: 0; }
-        to   { stroke-dashoffset: 120; }
-      }
+      .blink { animation: blink 3.2s ease-in-out infinite; }
+      .driftA { animation: driftA 4.8s ease-in-out infinite; }
+      .driftB { animation: driftB 5.6s ease-in-out infinite; }
+      .scan { animation: scan 5.5s linear infinite; }
 
       @keyframes blink {
-        0%,100% { opacity: .2; }
-        50% { opacity: .95; }
+        0%,100% { opacity:.18; }
+        50% { opacity:.65; }
       }
-
-      @keyframes bgPulse {
-        0%,100% { opacity: .95; }
-        50% { opacity: 1; }
+      @keyframes driftA {
+        0%,100% { transform: translate(0,0); }
+        50% { transform: translate(4px,-3px); }
       }
-
-      @keyframes gridMove {
-        from { transform: translateY(0); }
-        to   { transform: translateY(36px); }
+      @keyframes driftB {
+        0%,100% { transform: translate(0,0); }
+        50% { transform: translate(-5px,3px); }
+      }
+      @keyframes scan {
+        0% { transform: translateX(-1300px); opacity:0; }
+        10% { opacity:.26; }
+        50% { opacity:.08; }
+        100% { transform: translateX(1300px); opacity:0; }
       }
 
       @media (prefers-reduced-motion: reduce) {
         * { animation: none !important; }
-        .tEnter,.aEnter,.lEnter,.i1Enter,.bEnter,.i2Enter { opacity: 1 !important; transform: none !important; }
       }
     </style>
-
-    <!-- clips for scan per letter -->
-    <clipPath id="clipT"><text x="180" y="265" class="title">T</text></clipPath>
-    <clipPath id="clipA"><text x="350" y="265" class="title">A</text></clipPath>
-    <clipPath id="clipL"><text x="525" y="265" class="title">L</text></clipPath>
-    <clipPath id="clipI1"><text x="650" y="265" class="title">I</text></clipPath>
-    <clipPath id="clipB"><text x="740" y="265" class="title">B</text></clipPath>
-    <clipPath id="clipI2"><text x="930" y="265" class="title">I</text></clipPath>
   </defs>
 
-  <!-- background -->
-  <rect width="1200" height="480" fill="#03091f"/>
-  <rect width="1200" height="480" fill="url(#bg)" class="bgPulse"/>
+  <!-- Deep black background -->
+  <rect width="1200" height="480" fill="#000"/>
 
-  <!-- soft glow blobs -->
-  <g opacity="0.5">
-    <circle cx="220" cy="140" r="130" fill="#2e97ff" filter="url(#bigGlow)"/>
-    <circle cx="930" cy="310" r="170" fill="#114fff" filter="url(#bigGlow)"/>
-    <circle cx="780" cy="120" r="110" fill="#68d0ff" filter="url(#bigGlow)"/>
-  </g>
-
-  <!-- tech grid -->
-  <g class="grid" opacity="0.11">
-    <path d="
-      M0 70H1200 M0 110H1200 M0 150H1200 M0 190H1200 M0 230H1200
-      M0 270H1200 M0 310H1200 M0 350H1200 M0 390H1200 M0 430H1200
-      M80 0V480 M160 0V480 M240 0V480 M320 0V480 M400 0V480 M480 0V480
-      M560 0V480 M640 0V480 M720 0V480 M800 0V480 M880 0V480 M960 0V480
-      M1040 0V480 M1120 0V480"
-      stroke="#8fcfff" stroke-width="0.8"/>
+  <!-- rough upper sketch strokes -->
+  <g class="scratch driftA" opacity=".92" stroke-width="3.2">
+    <path d="M78 138 C190 104 328 91 450 109 C530 121 608 128 690 120"/>
+    <path d="M92 150 C224 110 348 105 458 119 C553 130 642 140 756 124" opacity=".7"/>
+    <path d="M108 164 C248 130 352 126 470 137 C590 148 690 145 815 126" opacity=".42"/>
+    <path d="M110 174 C203 151 273 145 336 151" opacity=".55"/>
+    <path d="M690 104 C778 99 874 108 972 136 C1035 154 1091 173 1135 196" opacity=".42"/>
   </g>
 
-  <!-- motion lines -->
-  <g fill="none" stroke="url(#trailGrad)" stroke-width="1.2" stroke-dasharray="8 16" opacity="0.35">
-    <path class="trail1" d="M-20 170 C150 170 200 130 370 130 S640 190 820 190 S1030 145 1220 145"/>
-    <path class="trail2" d="M-20 330 C150 330 230 280 430 280 S650 350 820 350 S1030 300 1220 300"/>
+  <!-- left and right speed scratches -->
+  <g class="scratch driftB" stroke-width="2.4" opacity=".62">
+    <path d="M18 228 C116 209 185 210 260 220"/>
+    <path d="M31 246 C124 229 182 233 240 239" opacity=".65"/>
+    <path d="M32 268 C96 254 151 257 207 264" opacity=".38"/>
+    <path d="M938 224 C1025 214 1098 219 1182 235"/>
+    <path d="M970 248 C1049 241 1101 247 1188 265" opacity=".62"/>
+    <path d="M1010 273 C1072 270 1129 279 1188 292" opacity=".34"/>
   </g>
 
-  <!-- sparks -->
-  <g fill="#c5ecff">
-    <circle class="spark" cx="370" cy="130" r="2.4"/>
-    <circle class="spark" cx="820" cy="190" r="2.4" style="animation-delay:.8s"/>
-    <circle class="spark" cx="430" cy="280" r="2.4" style="animation-delay:1.4s"/>
-    <circle class="spark" cx="820" cy="350" r="2.4" style="animation-delay:2s"/>
-    <circle class="spark" cx="980" cy="115" r="2" style="animation-delay:1s"/>
+  <!-- faint offset outlines to mimic dry-brush edges -->
+  <text x="121" y="307" class="ghost" opacity=".15">TALIBI</text>
+  <text x="116" y="311" class="ghost" opacity=".11">TALIBI</text>
+
+  <!-- Main white word -->
+  <text x="120" y="305" class="word">TALIBI</text>
+
+  <!-- cuts / ink breaks -->
+  <g stroke="#000" stroke-width="5" opacity=".92" filter="url(#scratchDistort)">
+    <path d="M152 249 L252 244"/>
+    <path d="M326 284 L414 275"/>
+    <path d="M481 228 L558 221"/>
+    <path d="M624 295 L677 289"/>
+    <path d="M754 241 L842 233"/>
+    <path d="M948 270 L1003 264"/>
   </g>
 
-  <!-- glow text behind -->
-  <g aria-hidden="true">
-    <text x="180" y="265" class="glowText">T</text>
-    <text x="350" y="265" class="glowText">A</text>
-    <text x="525" y="265" class="glowText">L</text>
-    <text x="650" y="265" class="glowText">I</text>
-    <text x="740" y="265" class="glowText">B</text>
-    <text x="930" y="265" class="glowText">I</text>
+  <!-- lower ink scratches, inspired by eyelash/charcoal marks -->
+  <g class="scratch" stroke-width="2.3" opacity=".88">
+    <path d="M173 337 C290 358 408 357 519 338"/>
+    <path d="M210 348 C320 370 450 367 566 344" opacity=".68"/>
+    <path d="M596 347 C717 364 852 360 1005 334"/>
+    <path d="M653 360 C778 378 895 367 1030 343" opacity=".62"/>
   </g>
 
-  <!-- main letters -->
-  <g>
-    <text x="180" y="265" class="title tEnter">T</text>
-    <text x="350" y="265" class="title aEnter">A</text>
-    <text x="525" y="265" class="title lEnter">L</text>
-    <text x="650" y="265" class="title i1Enter">I</text>
-    <text x="740" y="265" class="title bEnter">B</text>
-    <text x="930" y="265" class="title i2Enter">I</text>
+  <!-- small scratch clusters -->
+  <g class="scratch blink" stroke-width="1.6" opacity=".55">
+    <path d="M107 103 l34 -8 M126 116 l42 -10 M1041 118 l48 13 M1058 132 l55 17"/>
+    <path d="M279 388 l33 -5 M321 397 l50 -7 M851 391 l41 -5 M902 385 l58 -10"/>
   </g>
 
-  <!-- scan shine on each letter -->
-  <g clip-path="url(#clipT)">
-    <rect class="scan" x="0" y="80" width="260" height="240" fill="white" opacity="0.18"/>
-  </g>
-  <g clip-path="url(#clipA)">
-    <rect class="scan" x="0" y="80" width="260" height="240" fill="white" opacity="0.18"/>
-  </g>
-  <g clip-path="url(#clipL)">
-    <rect class="scan" x="0" y="80" width="260" height="240" fill="white" opacity="0.18"/>
-  </g>
-  <g clip-path="url(#clipI1)">
-    <rect class="scan" x="0" y="80" width="260" height="240" fill="white" opacity="0.18"/>
-  </g>
-  <g clip-path="url(#clipB)">
-    <rect class="scan" x="0" y="80" width="260" height="240" fill="white" opacity="0.18"/>
-  </g>
-  <g clip-path="url(#clipI2)">
-    <rect class="scan" x="0" y="80" width="260" height="240" fill="white" opacity="0.18"/>
+  <!-- subtle white scan streak -->
+  <g class="scan">
+    <rect x="-250" y="0" width="110" height="480" fill="#fff" opacity=".05" transform="skewX(-18)"/>
   </g>
 
-  <!-- bottom line -->
-  <line x1="250" y1="300" x2="980" y2="300" stroke="url(#trailGrad)" stroke-width="1.3" opacity="0.45"/>
-  <line x1="320" y1="310" x2="910" y2="310" stroke="url(#trailGrad)" stroke-width="1" opacity="0.28"/>
-
-  <!-- grain -->
-  <rect width="1200" height="480" filter="url(#grain)" opacity="0.5"/>
+  <!-- grain overlay -->
+  <rect width="1200" height="480" filter="url(#grain)" opacity=".34"/>
 </svg>
